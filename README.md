@@ -32,7 +32,7 @@ training/                 ← how the model was built (teacher, dataset, SFT, ev
 data/         templates/ (12 lines) · payloads/ (seeds) · examples/ (sample form JSON) · finetune/
 assets/pdf/   pandoc/tectonic styles
 schema/       form payload contract (dpr_input.schema.json + example)
-docs/         flow.md · FILE_FLOW.md · CONFIG_REFERENCE.md · FINANCIAL_ENGINE.md · EVAL_v4_vs_base.md · schema/
+docs/         flow.md · FILE_FLOW.md · CONFIG_REFERENCE.md · FINANCIAL_ENGINE.md · schema/
 ```
 
 Not in git (see `.gitignore`): `models/` (weights — see **Get the model** below), `output/`
@@ -116,7 +116,6 @@ python -m training.gpt_gen_payloads --dry-run --per-line 3   # end-to-end datase
 - **What each file does** → [docs/FILE_FLOW.md](docs/FILE_FLOW.md)
 - **Every field/param & where its value comes from** → [docs/CONFIG_REFERENCE.md](docs/CONFIG_REFERENCE.md)
 - **Financial formulas** → [docs/FINANCIAL_ENGINE.md](docs/FINANCIAL_ENGINE.md)
-- **v4 vs base eval** → [docs/EVAL_v4_vs_base.md](docs/EVAL_v4_vs_base.md)
 
 ## The 12 lines & schemes
 Rice / Dhal / Flour Mill · Oil Extraction *(any oilseed)* · Ghee · Spice · Juice *(any
