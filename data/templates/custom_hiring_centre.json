@@ -1,0 +1,109 @@
+{
+  "_comment": "Business-line template: Custom Hiring Centre (farm machinery rental). SERVICE revenue model - capacity is annual machine-hours rented; there is no raw material -> product. Operators are shown as labour; 'Direct operating cost' = fuel + on-field consumables (~30% of revenue) entered as rm_costing_method=pct_of_revenue. Source: NABCONS AIF CHC model DPR, mapped to the 5-yr NIFTEM base.",
+  "business_line": "custom_hiring_centre",
+  "revenue_model": "service",
+  "commodity": "custom hiring services",
+  "report_title": "DETAILED PROJECT REPORT - CUSTOM HIRING CENTRE",
+  "product_unit": "machine-hour",
+  "capacity_input_unit": "machine-hours/year",
+  "service_unit": "machine-hour",
+  "technical_defaults": {
+    "misc_fixed_assets_lakh": 1.0
+  },
+  "machinery_items_indicative": [
+    {
+      "name": "Tractor - 35 HP",
+      "inr": 600000
+    },
+    {
+      "name": "Rotavator",
+      "inr": 120000
+    },
+    {
+      "name": "Cultivator / MB plough / disc harrow",
+      "inr": 90000
+    },
+    {
+      "name": "Seed drill / planter",
+      "inr": 60000
+    },
+    {
+      "name": "Power tiller - 13 HP",
+      "inr": 150000
+    },
+    {
+      "name": "Multi-crop power thresher",
+      "inr": 80000
+    },
+    {
+      "name": "Self-propelled reaper",
+      "inr": 90000
+    },
+    {
+      "name": "Sprayers & accessories",
+      "inr": 30000
+    }
+  ],
+  "narrative": {
+    "product_intro": "A Custom Hiring Centre (CHC) is a set of farm machinery, implements and equipment owned by the FPO and rented out to member and neighbouring farmers on an hourly/per-acre basis, bringing mechanisation within reach of small and marginal holdings without each farmer having to own costly equipment.",
+    "raw_material_note": "A CHC has no processed raw material; the main running inputs are diesel/fuel and on-field consumables, and the key resource is the pool of well-maintained machinery serving farms within a 5-7 km radius.",
+    "process_steps": [
+      "Booking and scheduling of machinery by farmers",
+      "Dispatch of equipment and operator to the field",
+      "Field operation (tillage, sowing, threshing, harvesting, spraying)",
+      "Return, cleaning and routine maintenance of equipment",
+      "Metering of usage and rental billing"
+    ]
+  },
+  "config": {
+    "interest_rate_pct": 11.0,
+    "loan_tenor_months": 60,
+    "moratorium_months": 6,
+    "capacity_utilisation_ramp_pct": [
+      60,
+      65,
+      70,
+      75,
+      80
+    ],
+    "annual_price_escalation_pct": 5.0,
+    "depreciation_rate_pct": {
+      "plant_machinery": 15.0,
+      "misc_assets": 10.0
+    },
+    "working_capital_cycle_days": {
+      "raw_material_days": 0,
+      "finished_goods_days": 0,
+      "receivables_days": 15,
+      "payables_days": 7
+    },
+    "wc_margin_pct": 25.0,
+    "target_dscr_min": 1.5,
+    "rent_escalation_pct": 10.0,
+    "repair_pct_of_sales": 6.0,
+    "packaging_pct_of_sales": 0.0,
+    "selling_admin_pct_of_sales": 2.0,
+    "semi_variable_escalation_pct": 5.0,
+    "power": {
+      "connection_kw": 5,
+      "units_per_day": 10,
+      "rate_per_unit": 8.0
+    },
+    "labour_wage_table": [
+      {
+        "role": "Machine operator / driver",
+        "count": 3,
+        "monthly_wage_inr": 15000
+      }
+    ],
+    "staff_wage_table": [
+      {
+        "role": "Manager cum accountant",
+        "count": 1,
+        "monthly_wage_inr": 22000
+      }
+    ],
+    "tax_threshold_lakh": 0.0,
+    "tax_rate_pct": 25.0
+  }
+}

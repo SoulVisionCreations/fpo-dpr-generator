@@ -1,0 +1,57 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Sarson Utpadak Kisan Producer Company Ltd",
+    "location": {
+      "village": "Kumher",
+      "block": "Kumher",
+      "district": "Bharatpur",
+      "state": "Rajasthan"
+    },
+    "year_of_registration": 2020,
+    "total_members": 1800,
+    "annual_turnover_inr": 26000000,
+    "top_crops": ["Mustard", "Wheat", "Bajra"],
+    "business_line": "oil_extraction_unit"
+  },
+
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 1.067,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Local retailers", "Departmental stores", "Hotels & caterers", "Cattle-feed units (oil cake)"],
+    "price_realized_last_seasons_inr_per_unit": 30,
+    "own_funds_committed_inr": 129000,
+    "expected_direct_jobs": 9
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme"
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": false
+  },
+
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 6.30,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 2.0,
+    "civil_construction_lakh": 4.0,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Mustard seed",
+      "costing_method": "per_unit",
+      "value": 30
+    },
+    "product_selling_price_inr_per_unit": 132,
+    "product_unit": "Ltr",
+    "_price_note": "Effective realization per litre of oil: Rs 92 oil + ~Rs 40 oil-cake by-product (201000 kg cake x Rs 22 / 110000 L oil), folded into one price since the engine models a single product stream."
+  }
+}

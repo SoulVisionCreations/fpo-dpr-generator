@@ -1,0 +1,76 @@
+{
+  "document_type": "dpr",
+  "fields": {
+    "fpoName": "Chittoor Horti Growers Producer Company Limited",
+    "registrationNo": "U01403AP2020PTC054321",
+    "location": "Murakambattu, Chittoor, Andhra Pradesh",
+    "year": 2020,
+    "members": 1400,
+    "turnover": "Rs 1.8 crore",
+    "crops": "Mango, Tomato, Papaya, Vegetables",
+    "ceoName": "Smt. Lakshmi Reddy",
+    "mobile": "+91 94406 21538",
+    "email": "chittoorhorti@example.com",
+    "businessLine": "Nursery Hardening",
+    "commodity": "Mixed fruits",
+    "siteAddress": "Horticulture Farm Cluster, Murakambattu, Chittoor, Andhra Pradesh 517001",
+    "machinery": [
+      {
+        "item": "Poly/shade-net hardening structures & benches",
+        "cost_inr": 500000
+      },
+      {
+        "item": "Fogging, misting & drip irrigation system",
+        "cost_inr": 250000
+      },
+      {
+        "item": "Pump, tank, potting & media-handling equipment",
+        "cost_inr": 170000
+      }
+    ],
+    "landStatus": "Owned",
+    "civilCost": 2800000,
+    "otherFixedAssets": 220000,
+    "capacity": 1800,
+    "workingDays": 315,
+    "buyers": "Member orchardists, horticulture dept., private growers",
+    "salePrice": 17.5,
+    "priceEscalation": 5,
+    "manpower": [
+      {
+        "role": "Nursery worker (unskilled)",
+        "count": 5,
+        "monthly_wage_inr": 9000
+      },
+      {
+        "role": "Horticulturist / nursery manager",
+        "count": 1,
+        "monthly_wage_inr": 25000
+      },
+      {
+        "role": "Accountant cum supervisor",
+        "count": 1,
+        "monthly_wage_inr": 15000
+      }
+    ],
+    "rmcost": {
+      "mode": "unit",
+      "value": 6.5
+    },
+    "electricityCost": 12000,
+    "ownFunds": 600000,
+    "jobs": "10",
+    "schemeChoice": "Yes",
+    "schemeName": "MIDH",
+    "loan": {
+      "interest_pct": 11,
+      "tenure_months": 84,
+      "moratorium_months": 12
+    },
+    "docChecklist": [
+      "Audited financials",
+      "Land document",
+      "Vendor quote"
+    ]
+  }
+}

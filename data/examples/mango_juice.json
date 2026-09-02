@@ -1,0 +1,92 @@
+{
+  "document_type": "dpr",
+  "fields": {
+    "fpoName": "East Khasi Hills Mango Producers Company Ltd",
+    "registrationNo": "U15490ML2021PTC012345",
+    "location": "Mawphlang, East Khasi Hills, Meghalaya",
+    "year": 2021,
+    "members": 850,
+    "turnover": "Rs 1.2 crore",
+    "crops": "Mango, Pineapple, Assorted fruits",
+    "ceoName": "Shri Wankupar Lyngdoh",
+    "mobile": "+91 98630 12345",
+    "email": "ekhmpc.fpo@gmail.com",
+    "businessLine": "Juice Processing",
+    "commodity": "Mango",
+    "commodityOther": "",
+    "siteAddress": "Industrial Growth Centre, Mawphlang, East Khasi Hills, Meghalaya 793121",
+    "machinery": [
+      {
+        "item": "Fruit washer, sorter & pulper",
+        "cost_inr": 950000
+      },
+      {
+        "item": "Juice extractor & pasteuriser",
+        "cost_inr": 1260000
+      },
+      {
+        "item": "Filling, sealing & labelling line",
+        "cost_inr": 600000
+      },
+      {
+        "item": "Cold room, boiler & utilities",
+        "cost_inr": 400000
+      }
+    ],
+    "landStatus": "Leased/Rented",
+    "monthlyRent": 65000,
+    "civilCost": 800000,
+    "otherFixedAssets": 575000,
+    "capacity": 1.5,
+    "workingDays": 290,
+    "buyers": "Health-food stores, Ayurvedic manufacturers, Retail chains, Institutional caterers",
+    "salePrice": 98000,
+    "priceEscalation": 5,
+    "manpower": [
+      {
+        "role": "Machine Operator",
+        "count": 3,
+        "monthly_wage_inr": 13000
+      },
+      {
+        "role": "Worker / Labour",
+        "count": 5,
+        "monthly_wage_inr": 11000
+      },
+      {
+        "role": "Supervisor / Sales",
+        "count": 1,
+        "monthly_wage_inr": 24000
+      },
+      {
+        "role": "Accountant",
+        "count": 1,
+        "monthly_wage_inr": 20000
+      },
+      {
+        "role": "Security",
+        "count": 2,
+        "monthly_wage_inr": 10000
+      }
+    ],
+    "rmcost": {
+      "mode": "pct",
+      "value": 60
+    },
+    "electricityCost": 22000,
+    "ownFunds": 700000,
+    "jobs": "13",
+    "schemeChoice": "Yes",
+    "schemeName": "PMFME",
+    "loan": {
+      "interest_pct": 11,
+      "tenure_months": 84,
+      "moratorium_months": 12
+    },
+    "docChecklist": [
+      "Audited financials",
+      "Land/lease document",
+      "Vendor quote"
+    ]
+  }
+}

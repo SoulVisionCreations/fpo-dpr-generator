@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fpo-dpr-generator"
+version = "0.1.0"
+description = "FPO DPR generator - deterministic financial engine + finetuned narrative model (two-lane)"
+requires-python = ">=3.10"
+dependencies = []          # core (engine/render/convert) is pure stdlib
+
+[project.optional-dependencies]
+model = ["torch", "transformers", "peft"]   # narrative lane (GPU) + serving
+pdf   = ["pypandoc-binary"]                    # markdown -> PDF (bundles the pandoc binary; needs tectonic on PATH)
+
+[tool.setuptools.packages.find]
+include = ["dpr*"]

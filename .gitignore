@@ -1,0 +1,29 @@
+# --- secrets ---
+.env
+.env.*
+!.env.example
+
+# --- environments ---
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# --- large / regenerable artifacts ---
+# models/  : LoRA adapter + checkpoints -> S3 / AIKosh
+# output/  : generated DPRs, eval sweeps, client samples
+# logs/    : local + slurm run logs
+models/
+output/
+logs/
+
+# --- Notes ---
+notes.txt
+
+# --- toolchain caches ---
+.tectonic-home/
+
+# --- os ---
+.DS_Store

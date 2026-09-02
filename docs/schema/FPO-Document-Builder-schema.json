@@ -1,0 +1,98 @@
+{
+  "form": "FPO Document Builder",
+  "version": "1.0-final",
+  "adopted": "2026-08-18",
+  "note": "Canonical final schema (client-provided). Only the 'dpr' document type + reference_data are consumed by our pipeline; 'board' and 'agm' document types exist in the form but are out of scope for the DPR engine. Field 'name' is the backend key. Composite fields store objects/arrays per item_shape/shape.",
+  "document_types": {
+    "dpr": {
+      "label": "Detailed Project Report / Business Plan",
+      "sections": {
+        "basic": {
+          "title": "Basic Information & Crops",
+          "fields": [
+            {"name": "fpoName", "type": "text"},
+            {"name": "registrationNo", "label": "Registration No. / CIN", "type": "text"},
+            {"name": "location", "label": "Location (village, block, district)", "type": "text"},
+            {"name": "year", "label": "Year of registration", "type": "number"},
+            {"name": "members", "type": "number"},
+            {"name": "turnover", "label": "Annual turnover", "type": "text"},
+            {"name": "crops", "label": "Top crops grown by members", "type": "text"},
+            {"name": "ceoName", "label": "FPO CEO / Director", "type": "text"},
+            {"name": "mobile", "type": "text"},
+            {"name": "email", "type": "text"}
+          ]
+        },
+        "market": {
+          "title": "Land, Business Concept & Market",
+          "fields": [
+            {"name": "businessLine", "type": "select", "options": [
+              "Rice Mill", "Oil Extraction", "Juice Processing", "Fruit & Vegetable Grading",
+              "Nursery Hardening", "Vermicompost", "Custom Hiring Centre", "Storage / Warehouse",
+              "Dhal Mill", "Flour Mill", "Ghee Processing", "Spice Processing"]},
+            {"name": "commodity", "type": "select", "visible_when": {"field": "businessLine", "is_set": true},
+             "options": ["Paddy / Rice", "Wheat", "Pulses / Dal", "Mustard", "Groundnut / Oilseeds",
+               "Maize", "Amla", "Mango", "Banana", "Potato", "Onion", "Tomato", "Mixed vegetables",
+               "Mixed fruits", "Turmeric", "Spices", "Milk / Dairy", "Honey",
+               "Vermicompost / Organic manure", "Other"]},
+            {"name": "commodityOther", "type": "text", "visible_when": {"field": "commodity", "equals": "Other"}},
+            {"name": "siteAddress", "label": "Address of the proposed site", "type": "textarea", "visible_when": {"field": "businessLine", "is_set": true}},
+            {"name": "machinery", "type": "machinery", "visible_when": {"field": "businessLine", "is_set": true},
+             "item_shape": {"item": "string", "cost_inr": "number"}, "note": "array of rows; defaults per business_line"},
+            {"name": "landStatus", "type": "radio", "options": ["Owned", "Leased/Rented"]},
+            {"name": "monthlyRent", "type": "number", "visible_when": {"field": "landStatus", "equals": "Leased/Rented"}},
+            {"name": "civilCost", "label": "Civil construction (est. INR)", "type": "number"},
+            {"name": "otherFixedAssets", "type": "number"},
+            {"name": "capacity", "label": "Target capacity (units per day)", "type": "number"},
+            {"name": "workingDays", "type": "number"},
+            {"name": "buyers", "type": "textarea"},
+            {"name": "salePrice", "label": "Sale price per unit", "type": "number"},
+            {"name": "priceEscalation", "type": "number", "default": 5},
+            {"name": "manpower", "type": "manpower",
+             "item_shape": {"role": "string", "count": "number", "monthly_wage_inr": "number"},
+             "default_roles": ["Worker / Labour", "Operator", "Supervisor / Sales", "Security", "Other"]},
+            {"name": "rmcost", "type": "rmcost", "shape": {"mode": "pct | unit", "value": "number"}},
+            {"name": "electricityCost", "label": "Electricity per month (avg, INR)", "type": "number", "default": 15000},
+            {"name": "ownFunds", "label": "Own funds FPO can commit (INR)", "type": "number"},
+            {"name": "jobs", "label": "Expected direct jobs", "type": "text"}
+          ]
+        },
+        "scheme": {
+          "title": "Financing and Govt Scheme",
+          "fields": [
+            {"name": "schemeChoice", "type": "radio", "options": ["Yes", "No", "Not sure"]},
+            {"name": "schemeName", "type": "radio", "options": ["PMFME", "AIF", "MIDH", "Others"],
+             "visible_when": {"field": "schemeChoice", "equals": "Yes"}},
+            {"name": "loan", "type": "loan",
+             "shape": {"interest_pct": "number (default 11)", "tenure_months": "number (default 12)", "moratorium_months": "number (default 12)"}}
+          ]
+        },
+        "docs": {
+          "title": "Supporting Documents",
+          "fields": [
+            {"name": "docChecklist", "type": "checklist",
+             "options": ["Audited financials", "Land/lease document", "Vendor quote", "Off-take agreement / MOU"]}
+          ]
+        }
+      }
+    },
+    "board": {"label": "Board Meeting Minutes", "note": "out of scope for DPR engine"},
+    "agm": {"label": "AGM Notice & Minutes", "note": "out of scope for DPR engine"}
+  },
+  "reference_data": {
+    "business_lines": [
+      {"name": "Rice Mill", "unit": "kg", "default_capacity_per_day": 375, "default_working_days": 300, "default_sale_price_inr": 47, "default_raw_material": {"mode": "unit", "value": 22}, "machinery_default_total_inr": 4000000},
+      {"name": "Oil Extraction", "unit": "Ltr", "default_capacity_per_day": 237.5, "default_working_days": 300, "default_sale_price_inr": 140, "default_raw_material": {"mode": "unit", "value": 35}, "machinery_default_total_inr": 534000},
+      {"name": "Juice Processing", "unit": "KL", "default_capacity_per_day": 0.225, "default_working_days": 310, "default_sale_price_inr": 98000, "default_raw_material": {"mode": "pct", "value": 58}, "machinery_default_total_inr": 2585000},
+      {"name": "Fruit & Vegetable Grading", "unit": "kg", "default_capacity_per_day": 575, "default_working_days": 300, "default_sale_price_inr": 16.2, "default_raw_material": {"mode": "unit", "value": 9.8}, "machinery_default_total_inr": 4200000},
+      {"name": "Nursery Hardening", "unit": "plant", "default_capacity_per_day": 145, "default_working_days": 310, "default_sale_price_inr": 16.5, "default_raw_material": {"mode": "unit", "value": 6}, "machinery_default_total_inr": 800000},
+      {"name": "Vermicompost", "unit": "MT", "default_capacity_per_day": 0.29, "default_working_days": 310, "default_sale_price_inr": 4880, "default_raw_material": {"mode": "unit", "value": 132}, "machinery_default_total_inr": 100000},
+      {"name": "Custom Hiring Centre", "unit": "machine-hour", "default_capacity_per_day": 2.3, "default_working_days": 305, "default_sale_price_inr": 680, "default_raw_material": {"mode": "pct", "value": 30}, "machinery_default_total_inr": 1220000},
+      {"name": "Storage / Warehouse", "unit": "MT-year", "default_capacity_per_day": 1.1, "default_working_days": 365, "default_sale_price_inr": 2450, "default_raw_material": {"mode": "pct", "value": 5}, "machinery_default_total_inr": 14200000},
+      {"name": "Dhal Mill", "unit": null, "machinery_default_total_inr": 578000, "note": "capacity/price/rm defaults from our dal_mill template"},
+      {"name": "Flour Mill", "unit": null, "machinery_default_total_inr": 5000000, "note": "defaults from our flour_mill template"},
+      {"name": "Ghee Processing", "unit": null, "machinery_default_total_inr": 1938000, "note": "defaults from our processing_unit_ghee template"},
+      {"name": "Spice Processing", "unit": null, "machinery_default_total_inr": 1520000, "note": "defaults from our processing_unit_spices template"}
+    ],
+    "commodity_options": ["Paddy / Rice", "Wheat", "Pulses / Dal", "Mustard", "Groundnut / Oilseeds", "Maize", "Amla", "Mango", "Banana", "Potato", "Onion", "Tomato", "Mixed vegetables", "Mixed fruits", "Turmeric", "Spices", "Milk / Dairy", "Honey", "Vermicompost / Organic manure", "Other"]
+  }
+}

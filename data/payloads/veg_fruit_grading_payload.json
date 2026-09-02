@@ -1,0 +1,63 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Nashik Horti Fresh Producer Company Ltd",
+    "location": {
+      "village": "Pimpalgaon Baswant",
+      "block": "Niphad",
+      "district": "Nashik",
+      "state": "Maharashtra"
+    },
+    "year_of_registration": 2020,
+    "total_members": 1200,
+    "annual_turnover_inr": 22000000,
+    "top_crops": [
+      "Tomato",
+      "Onion",
+      "Grapes",
+      "Pomegranate"
+    ],
+    "business_line": "veg_fruit_grading_sorting_unit"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 4.0,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": [
+      "Retail chains",
+      "Exporters",
+      "Wholesale mandis",
+      "E-commerce"
+    ],
+    "price_realized_last_seasons_inr_per_unit": 10,
+    "own_funds_committed_inr": 480000,
+    "expected_direct_jobs": 10
+  },
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "midh"
+  },
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": true
+  },
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 30.0,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 5.0,
+    "civil_construction_lakh": 3.0,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Ungraded fruits & vegetables",
+      "costing_method": "per_unit",
+      "value": 9
+    },
+    "product_selling_price_inr_per_unit": 16,
+    "product_unit": "kg",
+    "_price_note": "RM = ungraded produce Rs 10/kg; graded/packed sold Rs 15/kg; 10% cull as wastage."
+  }
+}

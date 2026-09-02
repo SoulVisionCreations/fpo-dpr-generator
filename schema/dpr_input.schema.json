@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fpo-dpr/dpr_input.schema.json",
+  "title": "FPO DPR Input",
+  "description": "Input object for the FPO DPR generator. Four blocks: narrative (LLM-only prose), inputs (numeric fields with provenance), config (set by us, not the FPO), computed (filled by the engine).",
+  "type": "object",
+  "required": ["meta", "narrative", "inputs", "config", "computed"],
+  "additionalProperties": false,
+
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "description": "Every numeric input carries where it came from and when it was verified.",
+      "required": ["source", "verified_as_of"],
+      "properties": {
+        "source": {"type": "string"},
+        "verified_as_of": {"type": ["string", "null"], "description": "ISO date or null if unverified"}
+      }
+    },
+    "measure": {
+      "type": "object",
+      "description": "A numeric value bundled with its provenance.",
+      "required": ["value", "source", "verified_as_of"],
+      "properties": {
+        "value": {"type": "number"},
+        "unit": {"type": "string"},
+        "source": {"type": "string"},
+        "verified_as_of": {"type": ["string", "null"]}
+      }
+    }
+  },
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["synthetic"],
+      "properties": {
+        "commodity": {"type": "string"},
+        "report_title": {"type": "string"},
+        "synthetic": {"type": "boolean"},
+        "prepared_by": {"type": "string"},
+        "created_as_of": {"type": ["string", "null"]}
+      }
+    },
+
+    "narrative": {
+      "type": "object",
+      "description": "Qualitative FPO answers, free text / enums. Used by the LLM only.",
+      "properties": {
+        "fpo_name": {"type": ["string", "null"]},
+        "location": {"type": ["string", "null"]},
+        "members": {"type": ["integer", "null"]},
+        "product_intro": {"type": ["string", "null"]},
+        "product_uses_benefits": {"type": ["string", "null"]},
+        "market_potential": {"type": ["string", "null"]},
+        "raw_material_note": {"type": ["string", "null"]},
+        "process_steps": {"type": "array", "items": {"type": "string"}},
+        "value_chain": {"type": ["string", "null"]},
+        "market_text": {"type": ["string", "null"]},
+        "risk_text": {"type": ["string", "null"]},
+        "governance": {"type": ["string", "null"]},
+        "employment": {"type": ["string", "null"]},
+        "sustainability": {"type": ["string", "null"]}
+      }
+    },
+
+    "inputs": {
+      "type": "object",
+      "description": "Numeric fields collected per project. Each carries source + verified_as_of provenance.",
+      "required": ["land_status", "capex", "prices", "capacity", "own_equity_committed_lakh", "scheme"],
+      "properties": {
+        "land_status": {"enum": ["owned", "leased", "to_be_acquired"]},
+        "rent_per_month_inr": {"type": "number", "description": "Used only when land_status = leased; else 0"},
+
+        "capex": {
+          "type": "object",
+          "required": ["machinery_inr", "civil_construction_lakh", "misc_fixed_assets_lakh"],
+          "properties": {
+            "machinery_inr": {"type": "number"},
+            "machinery_items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "inr"],
+                "properties": {"name": {"type": "string"}, "inr": {"type": "number"}}
+              }
+            },
+            "civil_construction_lakh": {"type": "number"},
+            "misc_fixed_assets_lakh": {"type": "number"}
+          }
+        },
+
+        "prices": {
+          "type": "object",
+          "required": ["raw_material_price", "sale_price", "rm_costing_method"],
+          "properties": {
+            "rm_costing_method": {"enum": ["per_unit", "pct_of_revenue"]},
+            "raw_material_price": {"type": "number", "description": "per_unit: INR/kg; pct_of_revenue: fraction e.g. 0.60"},
+            "sale_price": {"type": "number", "description": "INR per kg"}
+          }
+        },
+
+        "capacity": {
+          "type": "object",
+          "required": ["per_hr_kg", "shift_hours", "working_days_per_annum", "wastage_pct", "pack_size_kg"],
+          "properties": {
+            "per_hr_kg": {"type": "number"},
+            "shift_hours": {"type": "number"},
+            "working_days_per_annum": {"type": "number"},
+            "wastage_pct": {"type": "number"},
+            "pack_size_kg": {"type": "number"}
+          }
+        },
+
+        "own_equity_committed_lakh": {"type": "number"},
+
+        "scheme": {
+          "type": "object",
+          "required": ["choice"],
+          "properties": {
+            "choice": {"enum": ["no_scheme", "pmfme", "aif", "midh", "smam"]}
+          }
+        },
+
+        "provenance": {
+          "type": "object",
+          "description": "source + verified_as_of for each numeric input field above (keyed by field path).",
+          "additionalProperties": {"$ref": "#/$defs/provenance"}
+        }
+      }
+    },
+
+    "config": {
+      "type": "object",
+      "description": "Set by us, not the FPO. Escalation / utilisation live here, not hardcoded in engine logic.",
+      "required": ["interest_rate_pct", "loan_tenor_months", "moratorium_months",
+                   "capacity_utilisation_ramp_pct", "annual_price_escalation_pct",
+                   "depreciation_rate_pct", "working_capital_cycle_days", "target_dscr_min", "wage_table"],
+      "properties": {
+        "interest_rate_pct": {"type": "number"},
+        "loan_tenor_months": {"type": "integer"},
+        "moratorium_months": {"type": "integer"},
+        "capacity_utilisation_ramp_pct": {
+          "type": "array", "items": {"type": "number"}, "minItems": 5, "maxItems": 5
+        },
+        "annual_price_escalation_pct": {"type": "number"},
+        "depreciation_rate_pct": {
+          "type": "object",
+          "required": ["plant_machinery", "misc_assets"],
+          "properties": {
+            "plant_machinery": {"type": "number"},
+            "misc_assets": {"type": "number"}
+          }
+        },
+        "working_capital_cycle_days": {
+          "type": "object",
+          "description": "Holding periods used to size gross working capital.",
+          "properties": {
+            "raw_material_days": {"type": "number"},
+            "finished_goods_days": {"type": "number"},
+            "receivables_days": {"type": "number"},
+            "payables_days": {"type": "number"}
+          }
+        },
+        "wc_margin_pct": {"type": "number", "description": "Promoter margin on gross WC; bank finances the rest"},
+        "target_dscr_min": {"type": "number"},
+        "preop_pct_of_machinery": {"type": "number"},
+        "tax_rate_pct": {"type": "number"},
+        "repairs_pct_of_machinery": {"type": "number"},
+        "insurance_pct_of_fixed_assets": {"type": "number"},
+        "selling_expenses_pct_of_sales": {"type": "number"},
+        "admin_overheads_pct_of_sales": {"type": "number"},
+        "power": {
+          "type": "object",
+          "properties": {
+            "connected_load_kw": {"type": "number"},
+            "load_factor": {"type": "number"},
+            "rate_per_kwh": {"type": "number"}
+          }
+        },
+        "wage_table": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["role", "count", "monthly_wage_inr"],
+            "properties": {
+              "role": {"type": "string"},
+              "count": {"type": "integer"},
+              "monthly_wage_inr": {"type": "number"}
+            }
+          }
+        }
+      }
+    },
+
+    "computed": {
+      "type": "object",
+      "description": "Left empty in the input; the engine fills it with all financial tables.",
+      "additionalProperties": true
+    }
+  }
+}

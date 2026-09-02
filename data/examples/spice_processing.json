@@ -1,0 +1,89 @@
+{
+  "document_type": "dpr",
+  "fields": {
+    "fpoName": "Savalaj Spice Processing Farmer Producer Company Ltd",
+    "registrationNo": "U15490MH2020PTC076543",
+    "location": "Savalaj, Kavathe Mahankal, Sangli, Maharashtra",
+    "year": 2020,
+    "members": 950,
+    "turnover": "Rs 1.1 crore",
+    "crops": "Turmeric, Chilli, Coriander",
+    "ceoName": "Shri Sopan Deshmukh",
+    "mobile": "+91 90280 33471",
+    "email": "savalajspice@example.com",
+    "businessLine": "Spice Processing",
+    "commodity": "Turmeric",
+    "siteAddress": "Plot 7, Agro-Processing Zone, Kavathe Mahankal, Sangli, Maharashtra 416405",
+    "machinery": [
+      {
+        "item": "Boiler, washer & pre-cleaner",
+        "cost_inr": 450000
+      },
+      {
+        "item": "Polisher / dryer",
+        "cost_inr": 720000
+      },
+      {
+        "item": "Pulveriser & grinding mill",
+        "cost_inr": 800000
+      },
+      {
+        "item": "Sieving, grading & blending unit",
+        "cost_inr": 280000
+      },
+      {
+        "item": "Packing & sealing line",
+        "cost_inr": 230000
+      }
+    ],
+    "landStatus": "Owned",
+    "civilCost": 520000,
+    "otherFixedAssets": 320000,
+    "capacity": 500,
+    "workingDays": 300,
+    "buyers": "Spice traders, retail brands, exporters, institutional kitchens",
+    "salePrice": 185,
+    "priceEscalation": 5,
+    "manpower": [
+      {
+        "role": "Skilled operator",
+        "count": 1,
+        "monthly_wage_inr": 16000
+      },
+      {
+        "role": "Unskilled worker",
+        "count": 3,
+        "monthly_wage_inr": 9000
+      },
+      {
+        "role": "Manager",
+        "count": 1,
+        "monthly_wage_inr": 18000
+      },
+      {
+        "role": "Accountant",
+        "count": 1,
+        "monthly_wage_inr": 14000
+      }
+    ],
+    "rmcost": {
+      "mode": "unit",
+      "value": 110
+    },
+    "electricityCost": 18000,
+    "ownFunds": 750000,
+    "jobs": "9",
+    "schemeChoice": "Yes",
+    "schemeName": "RKVY",
+    "loan": {
+      "interest_pct": 11,
+      "tenure_months": 84,
+      "moratorium_months": 12
+    },
+    "docChecklist": [
+      "Audited financials",
+      "Land document",
+      "Vendor quote"
+    ]
+  }
+}

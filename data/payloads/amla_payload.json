@@ -1,0 +1,56 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Thanjavur Horticulture Producers FPC Ltd",
+    "location": {
+      "village": "Vallam",
+      "block": "Thanjavur",
+      "district": "Thanjavur",
+      "state": "Tamil Nadu"
+    },
+    "year_of_registration": 2020,
+    "total_members": 1450,
+    "annual_turnover_inr": 12500000,
+    "top_crops": ["Aonla", "Banana", "Vegetables"],
+    "business_line": "processing_unit_fruit_juice"
+  },
+
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 1.0,
+      "unit": "KL/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Health stores", "Ayurvedic manufacturers", "Retail chains"],
+    "price_realized_last_seasons_inr_per_unit": 35,
+    "own_funds_committed_inr": 390000,
+    "expected_direct_jobs": 20
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme"
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": true
+  },
+
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 25.82,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 5.75,
+    "civil_construction_lakh": null,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Aonla (fresh fruit)",
+      "costing_method": "pct_of_revenue",
+      "value": 60
+    },
+    "product_selling_price_inr_per_unit": 85000,
+    "product_unit": "KL"
+  }
+}

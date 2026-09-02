@@ -1,0 +1,23 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Bundelkhand Dalhan Producer Company Ltd",
+    "location": {"village": "Barua Sagar", "block": "Jhansi", "district": "Jhansi", "state": "Uttar Pradesh"},
+    "year_of_registration": 2020, "total_members": 1650, "annual_turnover_inr": 16000000,
+    "top_crops": ["Chickpea (Gram)", "Wheat", "Mustard"],
+    "business_line": "dal_mill"
+  },
+  "stage1_land_business": {
+    "land_status": "leased",
+    "target_capacity": {"input_per_day": 1.6, "unit": "MT/day", "operating_days_per_year": 300},
+    "anticipated_buyers": ["Local kirana stores", "Wholesale grain traders", "RTE food processors"],
+    "price_realized_last_seasons_inr_per_unit": 62, "own_funds_committed_inr": 176000, "expected_direct_jobs": 6
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "pmfme"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": false},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 5.78, "machinery_items_optional": null, "other_fixed_assets_lakh": 2.50,
+    "civil_construction_lakh": null, "rent_per_month_inr": 30000,
+    "raw_material": {"name": "Chick peas (gram)", "costing_method": "per_unit", "value": 67.5},
+    "product_selling_price_inr_per_unit": 88, "product_unit": "kg"
+  }
+}

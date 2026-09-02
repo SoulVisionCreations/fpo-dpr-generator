@@ -1,0 +1,312 @@
+{"id": "amla__000", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 48.33, "avg_dscr": 6.87, "pat_y1": 18.46}
+{"id": "amla__001", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 41.41, "avg_dscr": 2.72, "pat_y1": 4.8}
+{"id": "amla__002", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 44.95, "avg_dscr": 4.84, "pat_y1": 11.79}
+{"id": "amla__003", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 41.98, "avg_dscr": 3.05, "pat_y1": 5.92}
+{"id": "amla__004", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 43.53, "avg_dscr": 3.98, "pat_y1": 8.97}
+{"id": "amla__005", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 41.77, "avg_dscr": 2.93, "pat_y1": 5.5}
+{"id": "amla__006", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 47.52, "avg_dscr": 6.38, "pat_y1": 16.86}
+{"id": "amla__007", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 46.85, "avg_dscr": 5.98, "pat_y1": 15.54}
+{"id": "amla__008", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 44.14, "avg_dscr": 4.36, "pat_y1": 10.19}
+{"id": "amla__009", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 47.98, "avg_dscr": 6.66, "pat_y1": 17.77}
+{"id": "amla__010", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 43.51, "avg_dscr": 3.97, "pat_y1": 8.94}
+{"id": "amla__011", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 49.09, "avg_dscr": 7.33, "pat_y1": 19.97}
+{"id": "amla__012", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 41.63, "avg_dscr": 2.85, "pat_y1": 5.23}
+{"id": "amla__013", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 42.86, "avg_dscr": 3.58, "pat_y1": 7.66}
+{"id": "amla__014", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 42.06, "avg_dscr": 3.1, "pat_y1": 6.07}
+{"id": "amla__015", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 49.05, "avg_dscr": 7.3, "pat_y1": 19.88}
+{"id": "amla__016", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 48.38, "avg_dscr": 6.9, "pat_y1": 18.55}
+{"id": "amla__017", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 48.18, "avg_dscr": 6.78, "pat_y1": 18.17}
+{"id": "amla__018", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 42.93, "avg_dscr": 3.62, "pat_y1": 7.78}
+{"id": "amla__019", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 48.16, "avg_dscr": 6.77, "pat_y1": 18.13}
+{"id": "amla__020", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 42.08, "avg_dscr": 3.12, "pat_y1": 6.12}
+{"id": "amla__021", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 41.25, "avg_dscr": 2.61, "pat_y1": 4.47}
+{"id": "amla__022", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 42.95, "avg_dscr": 3.64, "pat_y1": 7.84}
+{"id": "amla__023", "base": "amla", "business_line": "amla juice", "revenue_model": "processing", "tpc": 47.99, "avg_dscr": 6.67, "pat_y1": 17.79}
+{"id": "animal_feed__000", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.77, "avg_dscr": 3.11, "pat_y1": 2.5}
+{"id": "animal_feed__001", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 24.91, "avg_dscr": 3.13, "pat_y1": 1.53}
+{"id": "animal_feed__002", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 24.57, "avg_dscr": 2.98, "pat_y1": 1.64}
+{"id": "animal_feed__003", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.76, "avg_dscr": 4.93, "pat_y1": 6.78}
+{"id": "animal_feed__004", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.08, "avg_dscr": 3.9, "pat_y1": 3.88}
+{"id": "animal_feed__005", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.49, "avg_dscr": 4.89, "pat_y1": 6.41}
+{"id": "animal_feed__006", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.7, "avg_dscr": 5.63, "pat_y1": 7.91}
+{"id": "animal_feed__007", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.37, "avg_dscr": 4.7, "pat_y1": 6.08}
+{"id": "animal_feed__008", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.72, "avg_dscr": 3.03, "pat_y1": 1.69}
+{"id": "animal_feed__009", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.34, "avg_dscr": 3.54, "pat_y1": 3.28}
+{"id": "animal_feed__010", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 24.64, "avg_dscr": 2.53, "pat_y1": 0.16}
+{"id": "animal_feed__011", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.76, "avg_dscr": 2.48, "pat_y1": 0.68}
+{"id": "animal_feed__012", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.39, "avg_dscr": 2.69, "pat_y1": 0.75}
+{"id": "animal_feed__013", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.63, "avg_dscr": 3.38, "pat_y1": 2.26}
+{"id": "animal_feed__014", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.04, "avg_dscr": 3.19, "pat_y1": 2.76}
+{"id": "animal_feed__015", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.58, "avg_dscr": 4.43, "pat_y1": 5.62}
+{"id": "animal_feed__016", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.89, "avg_dscr": 2.58, "pat_y1": 1.04}
+{"id": "animal_feed__017", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 24.76, "avg_dscr": 2.37, "pat_y1": 0.19}
+{"id": "animal_feed__018", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.63, "avg_dscr": 2.9, "pat_y1": 1.7}
+{"id": "animal_feed__019", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.36, "avg_dscr": 4.22, "pat_y1": 4.76}
+{"id": "animal_feed__020", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.34, "avg_dscr": 3.9, "pat_y1": 3.85}
+{"id": "animal_feed__021", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.79, "avg_dscr": 3.28, "pat_y1": 2.82}
+{"id": "animal_feed__022", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 26.06, "avg_dscr": 3.49, "pat_y1": 3.14}
+{"id": "animal_feed__023", "base": "animal_feed", "business_line": "animal feed", "revenue_model": "processing", "tpc": 25.28, "avg_dscr": 3.7, "pat_y1": 2.99}
+{"id": "custom_hiring_centre__000", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.05, "avg_dscr": 2.08, "pat_y1": 1.08}
+{"id": "custom_hiring_centre__001", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.06, "avg_dscr": 2.17, "pat_y1": 1.31}
+{"id": "custom_hiring_centre__002", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 13.98, "avg_dscr": 1.66, "pat_y1": 0.08}
+{"id": "custom_hiring_centre__003", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.22, "avg_dscr": 3.04, "pat_y1": 3.56}
+{"id": "custom_hiring_centre__004", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.0, "avg_dscr": 1.8, "pat_y1": 0.41}
+{"id": "custom_hiring_centre__005", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.2, "avg_dscr": 2.92, "pat_y1": 3.25}
+{"id": "custom_hiring_centre__006", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.23, "avg_dscr": 3.07, "pat_y1": 3.64}
+{"id": "custom_hiring_centre__007", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.28, "avg_dscr": 3.35, "pat_y1": 4.42}
+{"id": "custom_hiring_centre__008", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.3, "avg_dscr": 3.47, "pat_y1": 4.75}
+{"id": "custom_hiring_centre__009", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.12, "avg_dscr": 2.52, "pat_y1": 2.2}
+{"id": "custom_hiring_centre__010", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.26, "avg_dscr": 3.27, "pat_y1": 4.21}
+{"id": "custom_hiring_centre__011", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.12, "avg_dscr": 2.49, "pat_y1": 2.11}
+{"id": "custom_hiring_centre__012", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.21, "avg_dscr": 2.99, "pat_y1": 3.44}
+{"id": "custom_hiring_centre__013", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.05, "avg_dscr": 2.11, "pat_y1": 1.15}
+{"id": "custom_hiring_centre__014", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.03, "avg_dscr": 1.98, "pat_y1": 0.85}
+{"id": "custom_hiring_centre__015", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.35, "avg_dscr": 3.71, "pat_y1": 5.32}
+{"id": "custom_hiring_centre__016", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.19, "avg_dscr": 2.87, "pat_y1": 3.11}
+{"id": "custom_hiring_centre__017", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.31, "avg_dscr": 3.52, "pat_y1": 4.89}
+{"id": "custom_hiring_centre__018", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 13.97, "avg_dscr": 1.64, "pat_y1": 0.02}
+{"id": "custom_hiring_centre__019", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.37, "avg_dscr": 3.8, "pat_y1": 5.53}
+{"id": "custom_hiring_centre__020", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.02, "avg_dscr": 1.93, "pat_y1": 0.72}
+{"id": "custom_hiring_centre__021", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 13.98, "avg_dscr": 1.68, "pat_y1": 0.11}
+{"id": "custom_hiring_centre__022", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.33, "avg_dscr": 3.63, "pat_y1": 5.14}
+{"id": "custom_hiring_centre__023", "base": "custom_hiring_centre", "business_line": "custom hiring services", "revenue_model": "service", "tpc": 14.01, "avg_dscr": 1.84, "pat_y1": 0.49}
+{"id": "dal_mill__000", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.84, "avg_dscr": 16.7, "pat_y1": 14.09}
+{"id": "dal_mill__001", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.47, "avg_dscr": 13.59, "pat_y1": 10.9}
+{"id": "dal_mill__002", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 18.76, "avg_dscr": 3.32, "pat_y1": 0.69}
+{"id": "dal_mill__003", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 20.67, "avg_dscr": 10.77, "pat_y1": 7.97}
+{"id": "dal_mill__004", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 15.77, "avg_dscr": 2.99, "pat_y1": 0.07}
+{"id": "dal_mill__005", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 20.7, "avg_dscr": 14.26, "pat_y1": 11.94}
+{"id": "dal_mill__006", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.33, "avg_dscr": 4.75, "pat_y1": 2.79}
+{"id": "dal_mill__007", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.82, "avg_dscr": 6.52, "pat_y1": 3.82}
+{"id": "dal_mill__008", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.78, "avg_dscr": 16.12, "pat_y1": 12.8}
+{"id": "dal_mill__009", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 20.03, "avg_dscr": 8.04, "pat_y1": 5.96}
+{"id": "dal_mill__010", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.07, "avg_dscr": 6.55, "pat_y1": 3.65}
+{"id": "dal_mill__011", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 18.79, "avg_dscr": 6.98, "pat_y1": 4.89}
+{"id": "dal_mill__012", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 16.89, "avg_dscr": 6.92, "pat_y1": 4.71}
+{"id": "dal_mill__013", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.72, "avg_dscr": 15.45, "pat_y1": 12.3}
+{"id": "dal_mill__014", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.74, "avg_dscr": 10.09, "pat_y1": 7.14}
+{"id": "dal_mill__015", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 16.48, "avg_dscr": 11.21, "pat_y1": 8.28}
+{"id": "dal_mill__016", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 21.38, "avg_dscr": 10.9, "pat_y1": 9.0}
+{"id": "dal_mill__017", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.14, "avg_dscr": 5.06, "pat_y1": 2.25}
+{"id": "dal_mill__018", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 15.62, "avg_dscr": 4.93, "pat_y1": 2.52}
+{"id": "dal_mill__019", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.73, "avg_dscr": 9.06, "pat_y1": 6.44}
+{"id": "dal_mill__020", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.04, "avg_dscr": 11.43, "pat_y1": 9.38}
+{"id": "dal_mill__021", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 16.84, "avg_dscr": 4.9, "pat_y1": 2.3}
+{"id": "dal_mill__022", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 20.03, "avg_dscr": 20.76, "pat_y1": 17.68}
+{"id": "dal_mill__023", "base": "dal_mill", "business_line": "dal", "revenue_model": "processing", "tpc": 19.37, "avg_dscr": 3.34, "pat_y1": 0.13}
+{"id": "flour_mill__000", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 72.71, "avg_dscr": 5.06, "pat_y1": 20.59}
+{"id": "flour_mill__001", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 78.48, "avg_dscr": 4.49, "pat_y1": 16.43}
+{"id": "flour_mill__002", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 69.62, "avg_dscr": 4.05, "pat_y1": 13.88}
+{"id": "flour_mill__003", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 75.36, "avg_dscr": 7.18, "pat_y1": 32.02}
+{"id": "flour_mill__004", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 78.38, "avg_dscr": 5.09, "pat_y1": 19.94}
+{"id": "flour_mill__005", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 70.82, "avg_dscr": 5.94, "pat_y1": 25.05}
+{"id": "flour_mill__006", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 68.86, "avg_dscr": 3.19, "pat_y1": 9.08}
+{"id": "flour_mill__007", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 71.58, "avg_dscr": 4.09, "pat_y1": 15.16}
+{"id": "flour_mill__008", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 64.92, "avg_dscr": 3.68, "pat_y1": 12.36}
+{"id": "flour_mill__009", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 79.66, "avg_dscr": 5.77, "pat_y1": 24.48}
+{"id": "flour_mill__010", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 78.59, "avg_dscr": 4.83, "pat_y1": 18.38}
+{"id": "flour_mill__011", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 73.74, "avg_dscr": 6.62, "pat_y1": 30.83}
+{"id": "flour_mill__012", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 68.55, "avg_dscr": 3.81, "pat_y1": 12.5}
+{"id": "flour_mill__013", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 77.55, "avg_dscr": 7.48, "pat_y1": 35.37}
+{"id": "flour_mill__014", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 66.17, "avg_dscr": 4.23, "pat_y1": 16.15}
+{"id": "flour_mill__015", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 63.74, "avg_dscr": 2.71, "pat_y1": 7.13}
+{"id": "flour_mill__016", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 72.82, "avg_dscr": 2.54, "pat_y1": 4.91}
+{"id": "flour_mill__017", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 80.09, "avg_dscr": 6.04, "pat_y1": 24.12}
+{"id": "flour_mill__018", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 63.41, "avg_dscr": 2.32, "pat_y1": 3.38}
+{"id": "flour_mill__019", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 75.78, "avg_dscr": 5.43, "pat_y1": 22.7}
+{"id": "flour_mill__020", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 67.37, "avg_dscr": 3.71, "pat_y1": 12.74}
+{"id": "flour_mill__021", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 70.25, "avg_dscr": 2.45, "pat_y1": 4.23}
+{"id": "flour_mill__022", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 72.85, "avg_dscr": 7.33, "pat_y1": 33.85}
+{"id": "flour_mill__023", "base": "flour_mill", "business_line": "wheat flour", "revenue_model": "processing", "tpc": 71.34, "avg_dscr": 4.13, "pat_y1": 15.22}
+{"id": "ghee__000", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.08, "avg_dscr": 3.4, "pat_y1": 2.48}
+{"id": "ghee__001", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.3, "avg_dscr": 5.47, "pat_y1": 7.53}
+{"id": "ghee__002", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.3, "avg_dscr": 3.2, "pat_y1": 2.0}
+{"id": "ghee__003", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.88, "avg_dscr": 4.11, "pat_y1": 4.5}
+{"id": "ghee__004", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.59, "avg_dscr": 2.86, "pat_y1": 1.1}
+{"id": "ghee__005", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.77, "avg_dscr": 5.52, "pat_y1": 7.69}
+{"id": "ghee__006", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 26.81, "avg_dscr": 2.57, "pat_y1": 0.42}
+{"id": "ghee__007", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.37, "avg_dscr": 3.17, "pat_y1": 1.96}
+{"id": "ghee__008", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.36, "avg_dscr": 2.64, "pat_y1": 0.56}
+{"id": "ghee__009", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.49, "avg_dscr": 6.01, "pat_y1": 8.65}
+{"id": "ghee__010", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.93, "avg_dscr": 2.89, "pat_y1": 1.17}
+{"id": "ghee__011", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.07, "avg_dscr": 5.96, "pat_y1": 8.61}
+{"id": "ghee__012", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.23, "avg_dscr": 4.69, "pat_y1": 5.86}
+{"id": "ghee__013", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.94, "avg_dscr": 4.78, "pat_y1": 6.04}
+{"id": "ghee__014", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.26, "avg_dscr": 4.12, "pat_y1": 4.46}
+{"id": "ghee__015", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.07, "avg_dscr": 3.97, "pat_y1": 4.09}
+{"id": "ghee__016", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.37, "avg_dscr": 5.76, "pat_y1": 8.18}
+{"id": "ghee__017", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.91, "avg_dscr": 4.9, "pat_y1": 6.24}
+{"id": "ghee__018", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.8, "avg_dscr": 3.09, "pat_y1": 1.7}
+{"id": "ghee__019", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.63, "avg_dscr": 3.14, "pat_y1": 1.87}
+{"id": "ghee__020", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.86, "avg_dscr": 3.62, "pat_y1": 3.14}
+{"id": "ghee__021", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 29.54, "avg_dscr": 6.29, "pat_y1": 9.34}
+{"id": "ghee__022", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 27.35, "avg_dscr": 2.82, "pat_y1": 1.05}
+{"id": "ghee__023", "base": "ghee", "business_line": "ghee", "revenue_model": "processing", "tpc": 28.35, "avg_dscr": 2.9, "pat_y1": 1.19}
+{"id": "mustard_oil__000", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 18.8, "avg_dscr": 3.98, "pat_y1": 0.77}
+{"id": "mustard_oil__001", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.72, "avg_dscr": 6.19, "pat_y1": 4.32}
+{"id": "mustard_oil__002", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.6, "avg_dscr": 8.56, "pat_y1": 7.41}
+{"id": "mustard_oil__003", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.48, "avg_dscr": 10.19, "pat_y1": 9.21}
+{"id": "mustard_oil__004", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.32, "avg_dscr": 8.08, "pat_y1": 6.77}
+{"id": "mustard_oil__005", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.16, "avg_dscr": 5.59, "pat_y1": 3.11}
+{"id": "mustard_oil__006", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 19.57, "avg_dscr": 5.14, "pat_y1": 2.66}
+{"id": "mustard_oil__007", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.06, "avg_dscr": 5.63, "pat_y1": 3.37}
+{"id": "mustard_oil__008", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 19.69, "avg_dscr": 4.48, "pat_y1": 1.49}
+{"id": "mustard_oil__009", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.48, "avg_dscr": 9.93, "pat_y1": 9.0}
+{"id": "mustard_oil__010", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.1, "avg_dscr": 6.21, "pat_y1": 4.12}
+{"id": "mustard_oil__011", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 19.37, "avg_dscr": 4.85, "pat_y1": 2.1}
+{"id": "mustard_oil__012", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.44, "avg_dscr": 10.96, "pat_y1": 10.26}
+{"id": "mustard_oil__013", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 19.74, "avg_dscr": 5.69, "pat_y1": 3.45}
+{"id": "mustard_oil__014", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.11, "avg_dscr": 6.94, "pat_y1": 5.5}
+{"id": "mustard_oil__015", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.26, "avg_dscr": 8.42, "pat_y1": 7.06}
+{"id": "mustard_oil__016", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 18.83, "avg_dscr": 4.62, "pat_y1": 1.53}
+{"id": "mustard_oil__017", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.23, "avg_dscr": 5.94, "pat_y1": 3.76}
+{"id": "mustard_oil__018", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 20.66, "avg_dscr": 7.48, "pat_y1": 5.9}
+{"id": "mustard_oil__019", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.73, "avg_dscr": 13.46, "pat_y1": 13.32}
+{"id": "mustard_oil__020", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.6, "avg_dscr": 7.07, "pat_y1": 5.5}
+{"id": "mustard_oil__021", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.98, "avg_dscr": 10.19, "pat_y1": 9.19}
+{"id": "mustard_oil__022", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 21.63, "avg_dscr": 10.02, "pat_y1": 9.35}
+{"id": "mustard_oil__023", "base": "mustard_oil", "business_line": "mustard oil", "revenue_model": "processing", "tpc": 19.77, "avg_dscr": 4.88, "pat_y1": 2.16}
+{"id": "nursery_hardening__000", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.06, "avg_dscr": 3.74, "pat_y1": 4.02}
+{"id": "nursery_hardening__001", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.49, "avg_dscr": 2.89, "pat_y1": 1.68}
+{"id": "nursery_hardening__002", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.98, "avg_dscr": 5.38, "pat_y1": 8.1}
+{"id": "nursery_hardening__003", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.15, "avg_dscr": 3.28, "pat_y1": 2.95}
+{"id": "nursery_hardening__004", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.03, "avg_dscr": 2.66, "pat_y1": 0.88}
+{"id": "nursery_hardening__005", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.79, "avg_dscr": 3.31, "pat_y1": 2.37}
+{"id": "nursery_hardening__006", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 41.22, "avg_dscr": 5.45, "pat_y1": 7.74}
+{"id": "nursery_hardening__007", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 41.52, "avg_dscr": 6.16, "pat_y1": 8.97}
+{"id": "nursery_hardening__008", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.53, "avg_dscr": 4.62, "pat_y1": 6.25}
+{"id": "nursery_hardening__009", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 41.01, "avg_dscr": 4.62, "pat_y1": 5.95}
+{"id": "nursery_hardening__010", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 41.26, "avg_dscr": 5.13, "pat_y1": 7.46}
+{"id": "nursery_hardening__011", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.76, "avg_dscr": 3.3, "pat_y1": 2.88}
+{"id": "nursery_hardening__012", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.4, "avg_dscr": 3.57, "pat_y1": 3.44}
+{"id": "nursery_hardening__013", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.55, "avg_dscr": 4.99, "pat_y1": 6.43}
+{"id": "nursery_hardening__014", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 38.92, "avg_dscr": 2.42, "pat_y1": 0.09}
+{"id": "nursery_hardening__015", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.46, "avg_dscr": 4.44, "pat_y1": 5.53}
+{"id": "nursery_hardening__016", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.8, "avg_dscr": 4.92, "pat_y1": 6.68}
+{"id": "nursery_hardening__017", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.6, "avg_dscr": 5.35, "pat_y1": 7.39}
+{"id": "nursery_hardening__018", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.28, "avg_dscr": 2.86, "pat_y1": 1.13}
+{"id": "nursery_hardening__019", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.63, "avg_dscr": 4.62, "pat_y1": 5.77}
+{"id": "nursery_hardening__020", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.85, "avg_dscr": 3.41, "pat_y1": 2.69}
+{"id": "nursery_hardening__021", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 40.55, "avg_dscr": 4.91, "pat_y1": 6.96}
+{"id": "nursery_hardening__022", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.4, "avg_dscr": 3.04, "pat_y1": 1.81}
+{"id": "nursery_hardening__023", "base": "nursery_hardening", "business_line": "hardened saplings", "revenue_model": "processing", "tpc": 39.33, "avg_dscr": 3.29, "pat_y1": 2.58}
+{"id": "rice_mill__000", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.1, "avg_dscr": 3.45, "pat_y1": 11.74}
+{"id": "rice_mill__001", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.66, "avg_dscr": 3.6, "pat_y1": 11.46}
+{"id": "rice_mill__002", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 58.69, "avg_dscr": 3.0, "pat_y1": 8.28}
+{"id": "rice_mill__003", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 58.19, "avg_dscr": 2.76, "pat_y1": 8.02}
+{"id": "rice_mill__004", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.85, "avg_dscr": 3.6, "pat_y1": 11.54}
+{"id": "rice_mill__005", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.74, "avg_dscr": 2.34, "pat_y1": 5.09}
+{"id": "rice_mill__006", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.97, "avg_dscr": 3.96, "pat_y1": 14.44}
+{"id": "rice_mill__007", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.07, "avg_dscr": 2.19, "pat_y1": 3.69}
+{"id": "rice_mill__008", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.89, "avg_dscr": 2.08, "pat_y1": 2.1}
+{"id": "rice_mill__009", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.24, "avg_dscr": 2.18, "pat_y1": 3.83}
+{"id": "rice_mill__010", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.8, "avg_dscr": 2.54, "pat_y1": 5.7}
+{"id": "rice_mill__011", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 55.58, "avg_dscr": 1.87, "pat_y1": 0.24}
+{"id": "rice_mill__012", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 56.17, "avg_dscr": 2.06, "pat_y1": 1.46}
+{"id": "rice_mill__013", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 56.16, "avg_dscr": 2.32, "pat_y1": 4.04}
+{"id": "rice_mill__014", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 56.7, "avg_dscr": 2.49, "pat_y1": 4.8}
+{"id": "rice_mill__015", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 55.68, "avg_dscr": 2.05, "pat_y1": 1.55}
+{"id": "rice_mill__016", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.47, "avg_dscr": 3.54, "pat_y1": 11.57}
+{"id": "rice_mill__017", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 59.61, "avg_dscr": 3.45, "pat_y1": 10.71}
+{"id": "rice_mill__018", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 58.19, "avg_dscr": 2.33, "pat_y1": 5.17}
+{"id": "rice_mill__019", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 58.76, "avg_dscr": 2.68, "pat_y1": 7.41}
+{"id": "rice_mill__020", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 57.12, "avg_dscr": 2.23, "pat_y1": 4.53}
+{"id": "rice_mill__021", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 60.61, "avg_dscr": 4.1, "pat_y1": 15.8}
+{"id": "rice_mill__022", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 56.55, "avg_dscr": 2.12, "pat_y1": 2.4}
+{"id": "rice_mill__023", "base": "rice_mill", "business_line": "rice", "revenue_model": "processing", "tpc": 56.69, "avg_dscr": 1.94, "pat_y1": 0.69}
+{"id": "spices__000", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 30.3, "avg_dscr": 6.89, "pat_y1": 11.53}
+{"id": "spices__001", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.97, "avg_dscr": 6.21, "pat_y1": 9.99}
+{"id": "spices__002", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.84, "avg_dscr": 6.54, "pat_y1": 10.87}
+{"id": "spices__003", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.79, "avg_dscr": 6.71, "pat_y1": 11.1}
+{"id": "spices__004", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 27.92, "avg_dscr": 3.92, "pat_y1": 4.67}
+{"id": "spices__005", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 28.24, "avg_dscr": 4.49, "pat_y1": 6.02}
+{"id": "spices__006", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.79, "avg_dscr": 4.08, "pat_y1": 5.11}
+{"id": "spices__007", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.82, "avg_dscr": 5.37, "pat_y1": 8.12}
+{"id": "spices__008", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 27.67, "avg_dscr": 2.74, "pat_y1": 1.33}
+{"id": "spices__009", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.41, "avg_dscr": 3.81, "pat_y1": 4.38}
+{"id": "spices__010", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.08, "avg_dscr": 4.58, "pat_y1": 6.28}
+{"id": "spices__011", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.66, "avg_dscr": 4.58, "pat_y1": 6.24}
+{"id": "spices__012", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 28.2, "avg_dscr": 3.4, "pat_y1": 3.2}
+{"id": "spices__013", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 30.26, "avg_dscr": 4.31, "pat_y1": 5.66}
+{"id": "spices__014", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 27.91, "avg_dscr": 2.65, "pat_y1": 1.04}
+{"id": "spices__015", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.61, "avg_dscr": 4.79, "pat_y1": 6.73}
+{"id": "spices__016", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 27.23, "avg_dscr": 2.75, "pat_y1": 1.42}
+{"id": "spices__017", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.84, "avg_dscr": 6.09, "pat_y1": 9.71}
+{"id": "spices__018", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 28.37, "avg_dscr": 4.29, "pat_y1": 5.64}
+{"id": "spices__019", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 28.86, "avg_dscr": 4.01, "pat_y1": 5.06}
+{"id": "spices__020", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 28.13, "avg_dscr": 3.94, "pat_y1": 4.72}
+{"id": "spices__021", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.84, "avg_dscr": 4.83, "pat_y1": 6.79}
+{"id": "spices__022", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.7, "avg_dscr": 4.93, "pat_y1": 7.09}
+{"id": "spices__023", "base": "spices", "business_line": "spices", "revenue_model": "processing", "tpc": 29.94, "avg_dscr": 5.16, "pat_y1": 7.49}
+{"id": "veg_fruit_grading__000", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.09, "avg_dscr": 4.91, "pat_y1": 10.46}
+{"id": "veg_fruit_grading__001", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.72, "avg_dscr": 3.44, "pat_y1": 4.73}
+{"id": "veg_fruit_grading__002", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.97, "avg_dscr": 5.96, "pat_y1": 15.42}
+{"id": "veg_fruit_grading__003", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 45.04, "avg_dscr": 7.57, "pat_y1": 20.98}
+{"id": "veg_fruit_grading__004", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.54, "avg_dscr": 6.32, "pat_y1": 15.59}
+{"id": "veg_fruit_grading__005", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.08, "avg_dscr": 4.89, "pat_y1": 9.83}
+{"id": "veg_fruit_grading__006", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.2, "avg_dscr": 5.6, "pat_y1": 11.41}
+{"id": "veg_fruit_grading__007", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.25, "avg_dscr": 5.71, "pat_y1": 13.1}
+{"id": "veg_fruit_grading__008", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.93, "avg_dscr": 5.25, "pat_y1": 11.89}
+{"id": "veg_fruit_grading__009", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.27, "avg_dscr": 2.9, "pat_y1": 3.25}
+{"id": "veg_fruit_grading__010", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.43, "avg_dscr": 5.21, "pat_y1": 10.94}
+{"id": "veg_fruit_grading__011", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.63, "avg_dscr": 4.7, "pat_y1": 9.74}
+{"id": "veg_fruit_grading__012", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.06, "avg_dscr": 4.65, "pat_y1": 8.69}
+{"id": "veg_fruit_grading__013", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.36, "avg_dscr": 6.04, "pat_y1": 14.63}
+{"id": "veg_fruit_grading__014", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.18, "avg_dscr": 4.78, "pat_y1": 9.18}
+{"id": "veg_fruit_grading__015", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.01, "avg_dscr": 3.24, "pat_y1": 4.91}
+{"id": "veg_fruit_grading__016", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.0, "avg_dscr": 2.48, "pat_y1": 0.19}
+{"id": "veg_fruit_grading__017", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.08, "avg_dscr": 3.17, "pat_y1": 2.87}
+{"id": "veg_fruit_grading__018", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.0, "avg_dscr": 3.04, "pat_y1": 3.37}
+{"id": "veg_fruit_grading__019", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.11, "avg_dscr": 5.83, "pat_y1": 13.81}
+{"id": "veg_fruit_grading__020", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 43.15, "avg_dscr": 4.1, "pat_y1": 7.3}
+{"id": "veg_fruit_grading__021", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 44.62, "avg_dscr": 7.07, "pat_y1": 16.5}
+{"id": "veg_fruit_grading__022", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.81, "avg_dscr": 3.64, "pat_y1": 4.84}
+{"id": "veg_fruit_grading__023", "base": "veg_fruit_grading", "business_line": "graded fruits and vegetables", "revenue_model": "processing", "tpc": 42.42, "avg_dscr": 3.04, "pat_y1": 2.84}
+{"id": "vermicompost__000", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.63, "avg_dscr": 10.43, "pat_y1": 2.68}
+{"id": "vermicompost__001", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.53, "avg_dscr": 7.5, "pat_y1": 1.6}
+{"id": "vermicompost__002", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.76, "avg_dscr": 14.19, "pat_y1": 4.22}
+{"id": "vermicompost__003", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.66, "avg_dscr": 11.22, "pat_y1": 3.0}
+{"id": "vermicompost__004", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.62, "avg_dscr": 10.0, "pat_y1": 2.51}
+{"id": "vermicompost__005", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.81, "avg_dscr": 15.93, "pat_y1": 4.95}
+{"id": "vermicompost__006", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.75, "avg_dscr": 14.21, "pat_y1": 4.23}
+{"id": "vermicompost__007", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.68, "avg_dscr": 11.98, "pat_y1": 3.3}
+{"id": "vermicompost__008", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.76, "avg_dscr": 14.22, "pat_y1": 4.23}
+{"id": "vermicompost__009", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.78, "avg_dscr": 14.94, "pat_y1": 4.54}
+{"id": "vermicompost__010", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.5, "avg_dscr": 6.02, "pat_y1": 1.1}
+{"id": "vermicompost__011", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.51, "avg_dscr": 6.59, "pat_y1": 1.29}
+{"id": "vermicompost__012", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.76, "avg_dscr": 14.31, "pat_y1": 4.27}
+{"id": "vermicompost__013", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.75, "avg_dscr": 14.12, "pat_y1": 4.19}
+{"id": "vermicompost__014", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.74, "avg_dscr": 13.65, "pat_y1": 3.99}
+{"id": "vermicompost__015", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.59, "avg_dscr": 9.35, "pat_y1": 2.26}
+{"id": "vermicompost__016", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.58, "avg_dscr": 8.88, "pat_y1": 2.08}
+{"id": "vermicompost__017", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.57, "avg_dscr": 8.68, "pat_y1": 2.01}
+{"id": "vermicompost__018", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.57, "avg_dscr": 8.53, "pat_y1": 1.96}
+{"id": "vermicompost__019", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.68, "avg_dscr": 11.75, "pat_y1": 3.21}
+{"id": "vermicompost__020", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.65, "avg_dscr": 11.18, "pat_y1": 2.98}
+{"id": "vermicompost__021", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.55, "avg_dscr": 7.88, "pat_y1": 1.73}
+{"id": "vermicompost__022", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.8, "avg_dscr": 15.5, "pat_y1": 4.77}
+{"id": "vermicompost__023", "base": "vermicompost", "business_line": "vermicompost", "revenue_model": "processing", "tpc": 4.77, "avg_dscr": 14.6, "pat_y1": 4.39}
+{"id": "warehouse_cold_storage__000", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.42, "avg_dscr": 3.53, "pat_y1": 13.35}
+{"id": "warehouse_cold_storage__001", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.54, "avg_dscr": 2.35, "pat_y1": 5.99}
+{"id": "warehouse_cold_storage__002", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.35, "avg_dscr": 2.08, "pat_y1": 4.16}
+{"id": "warehouse_cold_storage__003", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.62, "avg_dscr": 3.8, "pat_y1": 15.01}
+{"id": "warehouse_cold_storage__004", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.28, "avg_dscr": 1.97, "pat_y1": 3.4}
+{"id": "warehouse_cold_storage__005", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.3, "avg_dscr": 2.01, "pat_y1": 3.67}
+{"id": "warehouse_cold_storage__006", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.32, "avg_dscr": 3.39, "pat_y1": 12.49}
+{"id": "warehouse_cold_storage__007", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.39, "avg_dscr": 2.14, "pat_y1": 4.61}
+{"id": "warehouse_cold_storage__008", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.62, "avg_dscr": 2.46, "pat_y1": 6.68}
+{"id": "warehouse_cold_storage__009", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.5, "avg_dscr": 2.3, "pat_y1": 5.67}
+{"id": "warehouse_cold_storage__010", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.69, "avg_dscr": 2.55, "pat_y1": 7.23}
+{"id": "warehouse_cold_storage__011", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.07, "avg_dscr": 3.06, "pat_y1": 10.38}
+{"id": "warehouse_cold_storage__012", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.13, "avg_dscr": 1.75, "pat_y1": 1.78}
+{"id": "warehouse_cold_storage__013", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.78, "avg_dscr": 4.01, "pat_y1": 16.31}
+{"id": "warehouse_cold_storage__014", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.82, "avg_dscr": 4.06, "pat_y1": 16.65}
+{"id": "warehouse_cold_storage__015", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.66, "avg_dscr": 2.5, "pat_y1": 6.95}
+{"id": "warehouse_cold_storage__016", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.07, "avg_dscr": 1.66, "pat_y1": 1.13}
+{"id": "warehouse_cold_storage__017", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.69, "avg_dscr": 3.89, "pat_y1": 15.59}
+{"id": "warehouse_cold_storage__018", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.72, "avg_dscr": 2.59, "pat_y1": 7.49}
+{"id": "warehouse_cold_storage__019", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.45, "avg_dscr": 3.57, "pat_y1": 13.61}
+{"id": "warehouse_cold_storage__020", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.17, "avg_dscr": 3.19, "pat_y1": 11.25}
+{"id": "warehouse_cold_storage__021", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.53, "avg_dscr": 2.34, "pat_y1": 5.92}
+{"id": "warehouse_cold_storage__022", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 55.61, "avg_dscr": 3.78, "pat_y1": 14.9}
+{"id": "warehouse_cold_storage__023", "base": "warehouse_cold_storage", "business_line": "grain storage services", "revenue_model": "service", "tpc": 54.49, "avg_dscr": 2.28, "pat_y1": 5.53}

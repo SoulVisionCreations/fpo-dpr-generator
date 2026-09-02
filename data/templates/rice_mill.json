@@ -1,0 +1,124 @@
+{
+  "_comment": "Business-line template: Rice Mill on the NIFTEM base. OWN-MILLING scope only (paddy -> rice); the source cooperative/AIF DPRs also include Govt custom-milling commission and 8-9 yr horizons which are out of scope here. Rice yield 67% => wastage 33%. By-products (bran 10%, broken 12%, husk 6%) are folded into an EFFECTIVE rice price.",
+  "business_line": "rice_mill",
+  "commodity": "rice",
+  "report_title": "DETAILED PROJECT REPORT - RICE MILL",
+  "product_unit": "kg",
+  "capacity_input_unit": "MT/day",
+  "kg_per_capacity_unit": 1000,
+  "shift_hours": 8,
+  "technical_defaults": {
+    "wastage_pct": 33,
+    "pack_size_kg": 25,
+    "misc_fixed_assets_lakh": 3.0
+  },
+  "machinery_items_indicative": [
+    {
+      "name": "Paddy pre-cleaner & destoner",
+      "inr": 400000
+    },
+    {
+      "name": "Paddy dehusker / rubber sheller",
+      "inr": 900000
+    },
+    {
+      "name": "Paddy separator",
+      "inr": 500000
+    },
+    {
+      "name": "Rice whitener / polisher",
+      "inr": 1100000
+    },
+    {
+      "name": "Rice grader (drum)",
+      "inr": 400000
+    },
+    {
+      "name": "Bucket elevators & conveyors",
+      "inr": 500000
+    },
+    {
+      "name": "Weighing & bagging unit",
+      "inr": 200000
+    }
+  ],
+  "narrative": {
+    "product_intro": "Rice milling converts paddy into edible polished rice by removing the husk and bran layers; rice is the staple food across most of India, and milling adds value while yielding saleable by-products (bran, broken rice and husk).",
+    "raw_material_note": "The raw material is paddy procured from local farmers; the mill is best located in paddy-surplus belts with assured seasonal supply through farmer tie-ups.",
+    "process_steps": [
+      "Pre-cleaning of paddy",
+      "De-husking (rubber sheller)",
+      "Paddy/brown-rice separation",
+      "Whitening / polishing",
+      "Grading and separation of white rice",
+      "By-product collection (bran, husk, broken rice)",
+      "Weighing and bagging"
+    ]
+  },
+  "config": {
+    "interest_rate_pct": 11.0,
+    "loan_tenor_months": 60,
+    "moratorium_months": 6,
+    "capacity_utilisation_ramp_pct": [
+      60,
+      65,
+      70,
+      75,
+      80
+    ],
+    "annual_price_escalation_pct": 5.0,
+    "depreciation_rate_pct": {
+      "plant_machinery": 15.0,
+      "misc_assets": 10.0
+    },
+    "working_capital_cycle_days": {
+      "raw_material_days": 15,
+      "finished_goods_days": 15,
+      "receivables_days": 15,
+      "payables_days": 15
+    },
+    "wc_margin_pct": 25.0,
+    "target_dscr_min": 1.5,
+    "rent_escalation_pct": 10.0,
+    "repair_pct_of_sales": 1.5,
+    "packaging_pct_of_sales": 1.0,
+    "selling_admin_pct_of_sales": 1.5,
+    "semi_variable_escalation_pct": 5.0,
+    "power": {
+      "connection_kw": 40,
+      "units_per_day": 240,
+      "rate_per_unit": 8.0
+    },
+    "labour_wage_table": [
+      {
+        "role": "Mill operator",
+        "count": 1,
+        "monthly_wage_inr": 15000
+      },
+      {
+        "role": "Skilled worker",
+        "count": 2,
+        "monthly_wage_inr": 11000
+      },
+      {
+        "role": "Unskilled worker",
+        "count": 3,
+        "monthly_wage_inr": 8000
+      }
+    ],
+    "staff_wage_table": [
+      {
+        "role": "Manager",
+        "count": 1,
+        "monthly_wage_inr": 20000
+      },
+      {
+        "role": "Accountant",
+        "count": 1,
+        "monthly_wage_inr": 15000
+      }
+    ],
+    "tax_threshold_lakh": 0.0,
+    "tax_rate_pct": 25.0
+  }
+}

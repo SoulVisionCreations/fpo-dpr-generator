@@ -1,0 +1,56 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Shwetdhara Mahila Dugdh Utpadak FPC Ltd",
+    "location": {
+      "village": "Nighasan",
+      "block": "Nighasan",
+      "district": "Lakhimpur Kheri",
+      "state": "Uttar Pradesh"
+    },
+    "year_of_registration": 2021,
+    "total_members": 3200,
+    "annual_turnover_inr": 21000000,
+    "top_crops": ["Milk", "Paddy", "Sugarcane"],
+    "business_line": "processing_unit_ghee"
+  },
+
+  "stage1_land_business": {
+    "land_status": "leased",
+    "target_capacity": {
+      "input_per_day": 0.24,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Local retailers", "Sweet manufacturers", "Wholesale traders"],
+    "price_realized_last_seasons_inr_per_unit": 42,
+    "own_funds_committed_inr": 277000,
+    "expected_direct_jobs": 10
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme"
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": false
+  },
+
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 19.38,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 2.50,
+    "civil_construction_lakh": null,
+    "rent_per_month_inr": 30000,
+    "raw_material": {
+      "name": "Milk",
+      "costing_method": "per_unit",
+      "value": 180
+    },
+    "product_selling_price_inr_per_unit": 330,
+    "product_unit": "kg"
+  }
+}

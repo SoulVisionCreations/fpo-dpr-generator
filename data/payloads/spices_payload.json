@@ -1,0 +1,24 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Erode Turmeric Farmer Producer Company Ltd",
+    "location": {"village": "Gobichettipalayam", "block": "Erode", "district": "Erode", "state": "Tamil Nadu"},
+    "year_of_registration": 2019, "total_members": 1300, "annual_turnover_inr": 24000000,
+    "top_crops": ["Turmeric", "Chilli", "Coriander"],
+    "business_line": "processing_unit"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {"input_per_day": 0.3, "unit": "MT/day", "operating_days_per_year": 300},
+    "anticipated_buyers": ["Spice wholesalers", "Retail & kirana chains", "Institutional buyers", "Exporters"],
+    "price_realized_last_seasons_inr_per_unit": 95, "own_funds_committed_inr": 350000, "expected_direct_jobs": 6
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "pmfme"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": true},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 15.2, "machinery_items_optional": null, "other_fixed_assets_lakh": 2.5,
+    "civil_construction_lakh": 3.0, "rent_per_month_inr": null,
+    "raw_material": {"name": "Whole dried spices (turmeric/chilli/coriander)", "costing_method": "per_unit", "value": 95},
+    "product_selling_price_inr_per_unit": 165, "product_unit": "kg",
+    "_price_note": "Blended across turmeric/chilli/coriander: whole dried spice ~Rs 95/kg in, powder sells ~Rs 165/kg. Wastage ~8% (cleaning + grinding + moisture). business_line 'processing_unit' routes to spices via top_crops (Turmeric)."
+  }
+}

@@ -1,0 +1,3 @@
+## overlay applied AFTER dpr_pdf.yaml to suppress pandoc's auto-TOC at the top;
+## the TOC is injected manually (\tableofcontents) right after the Project Summary.
+toc: false

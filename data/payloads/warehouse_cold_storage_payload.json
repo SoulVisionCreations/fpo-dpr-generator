@@ -1,0 +1,31 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Godavari Grain Storage Producer Company Ltd",
+    "location": {"village": "Nizamabad", "block": "Nizamabad", "district": "Nizamabad", "state": "Telangana"},
+    "year_of_registration": 2018, "total_members": 1600, "annual_turnover_inr": 28000000,
+    "top_crops": ["Paddy", "Maize", "Turmeric"],
+    "business_line": "warehouse_cold_storage"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {"annual_units": 2000, "unit": "MT/year", "operating_days_per_year": 365},
+    "anticipated_buyers": ["Member farmers (warehouse-receipt storage)", "Traders", "Millers"],
+    "price_realized_last_seasons_inr_per_unit": 2200, "own_funds_committed_inr": 600000, "expected_direct_jobs": 7
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "aif"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": false},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 10.0,
+    "machinery_items_optional": [
+      {"name": "Weighbridge & weighing equipment", "inr": 800000},
+      {"name": "Material handling (stackers, trolleys, pallets)", "inr": 700000},
+      {"name": "Fumigation & fire-safety equipment", "inr": 400000},
+      {"name": "Office & IT setup", "inr": 300000}
+    ],
+    "other_fixed_assets_lakh": 2.0,
+    "civil_construction_lakh": 40.0, "rent_per_month_inr": null,
+    "raw_material": {"name": "Utilities & upkeep consumables", "costing_method": "pct_of_revenue", "value": 5},
+    "product_selling_price_inr_per_unit": 2200, "product_unit": "MT-year",
+    "_price_note": "Service model: 2000 MT scientific-storage capacity rented at Rs 2200 per MT per year (~Rs 183/MT/month). Warehouse shed (Rs 40 L) is civil construction on owned land; equipment listed separately. Direct operating cost (utilities, fumigation, upkeep) ~5% of revenue; no raw-material -> product conversion."
+  }
+}

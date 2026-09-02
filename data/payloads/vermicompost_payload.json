@@ -1,0 +1,59 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Sahyadri Jaivik Sheti Producer Company Ltd",
+    "location": {
+      "village": "Pimpalgaon",
+      "block": "Niphad",
+      "district": "Nashik",
+      "state": "Maharashtra"
+    },
+    "year_of_registration": 2021,
+    "total_members": 950,
+    "annual_turnover_inr": 8500000,
+    "top_crops": ["Grapes", "Onion", "Vegetables"],
+    "business_line": "vermicompost_organic_fertilizer_unit"
+  },
+
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 1.667,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Local farmers & horticulturists", "Organic farms", "Nurseries & garden centres", "Agri-input retailers", "E-commerce platforms"],
+    "price_realized_last_seasons_inr_per_unit": 0,
+    "own_funds_committed_inr": 40000,
+    "expected_direct_jobs": 3
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "midh"
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": false,
+    "offtake_agreement_mou": false
+  },
+
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 1.0,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 1.0,
+    "civil_construction_lakh": 2.0,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Organic waste (farm waste, market waste, cow dung)",
+      "costing_method": "per_unit",
+      "value": 125
+    },
+    "product_selling_price_inr_per_unit": 4740,
+    "product_unit": "MT",
+    "_price_note": "Effective realization per MT of compost: Rs 4,500 compost + ~Rs 240 vermiwash & earthworm-culture sales folded in (Rs 48,000/yr over ~200 MT), single-product engine.",
+    "_capacity_note": "1.667 MT/day organic waste input x 300 days = 500 MT/yr; at 50% conversion -> 250 MT/yr compost capacity; 5-6 cycles of 65-70 days.",
+    "_capex_note": "Civil 2.0 L = cement beds, covered shed, drying platform, site prep. Other assets 1.0 L = earthworm mother culture, branding/certification, storage setup."
+  }
+}

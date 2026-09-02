@@ -1,0 +1,61 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Malwa Gehu Utpadak Producer Company Ltd",
+    "location": {
+      "village": "Sehore",
+      "block": "Sehore",
+      "district": "Sehore",
+      "state": "Madhya Pradesh"
+    },
+    "year_of_registration": 2021,
+    "total_members": 1900,
+    "annual_turnover_inr": 30000000,
+    "top_crops": [
+      "Wheat",
+      "Soybean",
+      "Gram"
+    ],
+    "business_line": "flour_mill"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 6.0,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": [
+      "Retail grocers",
+      "Bakeries",
+      "Institutional buyers"
+    ],
+    "price_realized_last_seasons_inr_per_unit": 22,
+    "own_funds_committed_inr": 450000,
+    "expected_direct_jobs": 5
+  },
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme"
+  },
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": false
+  },
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 40.0,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 2.0,
+    "civil_construction_lakh": 4.0,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Wheat grain",
+      "costing_method": "per_unit",
+      "value": 22
+    },
+    "product_selling_price_inr_per_unit": 28,
+    "product_unit": "kg",
+    "_price_note": "Effective atta realization ~Rs 23/kg (atta ~Rs 22 + bran folded)."
+  }
+}

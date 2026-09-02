@@ -1,0 +1,24 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Bhooswamini Mahila Farmer Producer Company Ltd",
+    "location": {"village": "Nighasan", "block": "Nighasan", "district": "Lakhimpur Kheri", "state": "Uttar Pradesh"},
+    "year_of_registration": 2022, "total_members": 5200, "annual_turnover_inr": 35000000,
+    "top_crops": ["Banana", "Papaya", "Vegetables"],
+    "business_line": "nursery_tissue_culture_hardening_unit"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {"annual_units": 400000, "unit": "plants/year", "operating_days_per_year": 300},
+    "anticipated_buyers": ["Member farmers", "Department of Horticulture", "KVKs", "Private nurseries", "Neighbouring FPOs"],
+    "price_realized_last_seasons_inr_per_unit": 16, "own_funds_committed_inr": 400000, "expected_direct_jobs": 7
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "midh"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": true},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 8.0, "machinery_items_optional": null, "other_fixed_assets_lakh": 2.0,
+    "civil_construction_lakh": 24.0, "rent_per_month_inr": null,
+    "raw_material": {"name": "Tissue-culture plantlets", "costing_method": "per_unit", "value": 6},
+    "product_selling_price_inr_per_unit": 16, "product_unit": "plant",
+    "_price_note": "Blended across banana/papaya/vegetable saplings: plantlet input ~Rs 6/plant, hardened sapling sells ~Rs 16/plant. Polyhouse + shade-net structures (Rs 24 L) are civil construction on owned land; misting/irrigation/benches are machinery. 'Wastage' = ~12% hardening mortality."
+  }
+}

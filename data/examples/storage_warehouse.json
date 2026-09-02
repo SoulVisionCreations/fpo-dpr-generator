@@ -1,0 +1,80 @@
+{
+  "document_type": "dpr",
+  "fields": {
+    "fpoName": "Anand Agro Storage Producer Company Ltd",
+    "registrationNo": "U63020GJ2020PTC098765",
+    "location": "Anand, Anand district, Gujarat",
+    "year": 2020,
+    "members": 1200,
+    "turnover": "Rs 3.4 crore",
+    "crops": "Paddy, Wheat, Tur, Maize",
+    "ceoName": "Shri Prakash Patel",
+    "mobile": "+91 99251 40678",
+    "email": "anandagrostorage@example.com",
+    "businessLine": "Storage / Warehouse",
+    "commodity": "Paddy / Rice",
+    "siteAddress": "Survey No. 212, GIDC Industrial Estate, Anand, Gujarat 388001",
+    "machinery": [
+      {
+        "item": "Weighbridge (40 MT) & weighing equipment",
+        "cost_inr": 800000
+      },
+      {
+        "item": "Material handling — stackers, trolleys, pallets",
+        "cost_inr": 400000
+      },
+      {
+        "item": "Fumigation & fire-safety equipment",
+        "cost_inr": 250000
+      },
+      {
+        "item": "Moisture meters, racking & office/IT setup",
+        "cost_inr": 150000
+      }
+    ],
+    "landStatus": "Owned",
+    "civilCost": 6800000,
+    "otherFixedAssets": 350000,
+    "capacity": 3400,
+    "workingDays": 355,
+    "buyers": "Member farmers, FPOs, grain traders, WDRA depositors",
+    "salePrice": 2600,
+    "priceEscalation": 5,
+    "manpower": [
+      {
+        "role": "Warehouse labour",
+        "count": 5,
+        "monthly_wage_inr": 12000
+      },
+      {
+        "role": "Accountant / manager",
+        "count": 1,
+        "monthly_wage_inr": 26000
+      },
+      {
+        "role": "Security",
+        "count": 2,
+        "monthly_wage_inr": 10000
+      }
+    ],
+    "rmcost": {
+      "mode": "pct",
+      "value": 5
+    },
+    "electricityCost": 15000,
+    "ownFunds": 2000000,
+    "jobs": "8",
+    "schemeChoice": "Yes",
+    "schemeName": "AIF",
+    "loan": {
+      "interest_pct": 11,
+      "tenure_months": 84,
+      "moratorium_months": 12
+    },
+    "docChecklist": [
+      "Audited financials",
+      "Land/lease document",
+      "Vendor quote"
+    ]
+  }
+}

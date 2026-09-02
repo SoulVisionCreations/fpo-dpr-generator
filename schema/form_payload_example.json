@@ -1,0 +1,83 @@
+{
+  "_comment": "Structure of the website form payload. Stages 0-3 mirror the existing NAFPO HTML; section 'project_costs_and_prices' is the NEW section we need added. Example values filled for a ghee unit.",
+
+  "stage0_basic_info": {
+    "fpo_name": "Example Mahila FPC Ltd",
+    "location": {
+      "village": "Nighasan",
+      "block": "Nighasan",
+      "district": "Lakhimpur Kheri",
+      "state": "Uttar Pradesh"
+    },
+    "year_of_registration": 2022,
+    "total_members": 5200,
+    "annual_turnover_inr": 35000000,
+    "top_crops": ["Paddy", "Sugarcane", "Milk"],
+    "business_line": "processing_unit_ghee",
+    "_business_line_options": [
+      "rice_dal_flour_mill",
+      "oil_extraction_unit",
+      "veg_fruit_grading_sorting_unit",
+      "vermicompost_organic_fertilizer_unit",
+      "warehouse_cold_storage",
+      "processing_unit_spices",
+      "processing_unit_ghee",
+      "processing_unit_fruit_juice",
+      "processing_unit_animal_feed",
+      "custom_hiring_centre",
+      "nursery_tissue_culture_hardening_unit"
+    ]
+  },
+
+  "stage1_land_business": {
+    "land_status": "leased",
+    "_land_status_options": ["owned", "leased", "to_be_acquired"],
+    "target_capacity": {
+      "input_per_day": 0.24,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Local retailers", "Sweet manufacturers", "Wholesale traders"],
+    "price_realized_last_seasons_inr_per_unit": 42,
+    "_price_realized_note": "crop/raw price members got - used for context only, NOT the product sale price",
+    "own_funds_committed_inr": 277000,
+    "expected_direct_jobs": 10
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme",
+    "_scheme_options": ["pmfme", "aif", "midh", "no_scheme"]
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": false
+  },
+
+  "project_costs_and_prices": {
+    "_comment": "NEW section (A: capital costs, B: raw material & price). Conditional fields per land_status.",
+
+    "machinery_total_lakh": 19.38,
+    "machinery_items_optional": [
+      {"name": "Milk Pasteurizer", "qty": 1, "rate_inr": 275000}
+    ],
+    "other_fixed_assets_lakh": 2.50,
+    "civil_construction_lakh": null,
+    "_civil_note": "ask only if land_status = to_be_acquired (or owned with construction planned)",
+    "rent_per_month_inr": 30000,
+    "_rent_note": "ask only if land_status = leased",
+
+    "raw_material": {
+      "name": "Milk",
+      "costing_method": "per_unit",
+      "_costing_method_options": ["per_unit", "pct_of_revenue"],
+      "value": 180,
+      "_value_note": "per_unit -> Rs per kg/litre; pct_of_revenue -> percent e.g. 60"
+    },
+    "product_selling_price_inr_per_unit": 330,
+    "product_unit": "kg"
+  }
+}

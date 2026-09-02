@@ -1,0 +1,24 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Kaveri Delta Paddy Producer Company Ltd",
+    "location": {"village": "Kumbakonam", "block": "Thanjavur", "district": "Thanjavur", "state": "Tamil Nadu"},
+    "year_of_registration": 2019, "total_members": 2400, "annual_turnover_inr": 42000000,
+    "top_crops": ["Paddy", "Black gram", "Sugarcane"],
+    "business_line": "rice_mill"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {"input_per_day": 2.0, "unit": "MT/day", "operating_days_per_year": 300},
+    "anticipated_buyers": ["Rice wholesalers", "PDS / civil supplies", "Retail chains"],
+    "price_realized_last_seasons_inr_per_unit": 20, "own_funds_committed_inr": 500000, "expected_direct_jobs": 6
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "pmfme"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": true},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 40.0, "machinery_items_optional": null, "other_fixed_assets_lakh": 3.0,
+    "civil_construction_lakh": 5.0, "rent_per_month_inr": null,
+    "raw_material": {"name": "Paddy", "costing_method": "per_unit", "value": 18},
+    "product_selling_price_inr_per_unit": 42, "product_unit": "kg",
+    "_price_note": "Effective rice realization ~Rs 42/kg = Rs 35 rice + folded by-products (bran/broken/husk) per kg of rice."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Malwa Krishi Yantra Producer Company Ltd",
+    "location": {"village": "Sehore", "block": "Sehore", "district": "Sehore", "state": "Madhya Pradesh"},
+    "year_of_registration": 2020, "total_members": 850, "annual_turnover_inr": 9000000,
+    "top_crops": ["Wheat", "Soybean", "Gram"],
+    "business_line": "custom_hiring_centre"
+  },
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {"annual_units": 5000, "unit": "machine-hours/year", "operating_days_per_year": 300},
+    "anticipated_buyers": ["Member farmers", "Neighbouring small & marginal farmers", "Nearby FPOs"],
+    "price_realized_last_seasons_inr_per_unit": 650, "own_funds_committed_inr": 300000, "expected_direct_jobs": 5
+  },
+  "stage2_scheme": {"apply_for_scheme": true, "scheme_choice": "aif"},
+  "stage3_documents": {"audited_financials": true, "land_or_lease_document": true, "vendor_quote": true, "offtake_agreement_mou": false},
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 12.2, "machinery_items_optional": null, "other_fixed_assets_lakh": 1.0,
+    "civil_construction_lakh": 0, "rent_per_month_inr": null,
+    "raw_material": {"name": "Fuel & field consumables", "costing_method": "pct_of_revenue", "value": 30},
+    "product_selling_price_inr_per_unit": 650, "product_unit": "machine-hour",
+    "_price_note": "Service model: rental Rs 650 per machine-hour (blended tractor+implement/thresher/reaper). Operators shown as labour; direct operating cost (diesel + on-field consumables) taken at 30% of revenue. There is no raw-material -> product conversion."
+  }
+}

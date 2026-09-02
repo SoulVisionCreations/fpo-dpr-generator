@@ -1,0 +1,56 @@
+{
+  "stage0_basic_info": {
+    "fpo_name": "Kaveri Pasu Aharam Producer Company Ltd",
+    "location": {
+      "village": "Ayyampettai",
+      "block": "Papanasam",
+      "district": "Thanjavur",
+      "state": "Tamil Nadu"
+    },
+    "year_of_registration": 2019,
+    "total_members": 2100,
+    "annual_turnover_inr": 18000000,
+    "top_crops": ["Maize", "Paddy", "Pulses"],
+    "business_line": "processing_unit_animal_feed"
+  },
+
+  "stage1_land_business": {
+    "land_status": "owned",
+    "target_capacity": {
+      "input_per_day": 1.2,
+      "unit": "MT/day",
+      "operating_days_per_year": 300
+    },
+    "anticipated_buyers": ["Dairy cooperatives", "Poultry farms", "Feed retailers"],
+    "price_realized_last_seasons_inr_per_unit": 18,
+    "own_funds_committed_inr": 209000,
+    "expected_direct_jobs": 6
+  },
+
+  "stage2_scheme": {
+    "apply_for_scheme": true,
+    "scheme_choice": "pmfme"
+  },
+
+  "stage3_documents": {
+    "audited_financials": true,
+    "land_or_lease_document": true,
+    "vendor_quote": true,
+    "offtake_agreement_mou": true
+  },
+
+  "project_costs_and_prices": {
+    "machinery_total_lakh": 13.86,
+    "machinery_items_optional": null,
+    "other_fixed_assets_lakh": 2.0,
+    "civil_construction_lakh": 4.0,
+    "rent_per_month_inr": null,
+    "raw_material": {
+      "name": "Grains, brans, protein meals & mineral mixture (average)",
+      "costing_method": "per_unit",
+      "value": 13
+    },
+    "product_selling_price_inr_per_unit": 23,
+    "product_unit": "kg"
+  }
+}

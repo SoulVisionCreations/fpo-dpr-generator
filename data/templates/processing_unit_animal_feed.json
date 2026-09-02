@@ -1,0 +1,118 @@
+{
+  "_comment": "Business-line template: Animal Feed Making Unit (IIFPT PM-FME model DPR). Technical norms not asked on the form. Contingency (Rs 1 L) folded into misc fixed assets.",
+  "business_line": "processing_unit_animal_feed",
+  "commodity": "animal feed",
+  "report_title": "DETAILED PROJECT REPORT - ANIMAL FEED MAKING UNIT",
+  "product_unit": "kg",
+  "capacity_input_unit": "MT/day",
+  "kg_per_capacity_unit": 1000,
+  "shift_hours": 8,
+  "technical_defaults": {
+    "wastage_pct": 0,
+    "pack_size_kg": 50,
+    "misc_fixed_assets_lakh": 2.0
+  },
+  "machinery_items_indicative": [
+    {
+      "name": "Cattle Feed Batch Mixer",
+      "inr": 95000
+    },
+    {
+      "name": "Cattle Feed Grinder",
+      "inr": 120000
+    },
+    {
+      "name": "Cattle Feed Screw Conveyer",
+      "inr": 140000
+    },
+    {
+      "name": "Cattle Feed Pellet Making Machine",
+      "inr": 400000
+    },
+    {
+      "name": "Packing Machine",
+      "inr": 380000
+    },
+    {
+      "name": "Material handling equipment (trolley, bins, etc.)",
+      "inr": 40000
+    }
+  ],
+  "narrative": {
+    "product_intro": "Compound animal (cattle) feed is a balanced blend of grains, brans, protein meals/cakes, chunnies, agro-industrial by-products and mineral-vitamin mixtures, pelleted for easy feeding; quality compound feed supplies the macro and micronutrients dairy animals cannot get from crop-residue-based diets.",
+    "raw_material_note": "Raw materials: grains (maize, wheat, millets), brans (rice polish, de-oiled rice bran, wheat bran), protein meals/cakes (soybean, groundnut, cottonseed), pulse chunnies, molasses and mineral/vitamin premix - all traded agro commodities available in local markets.",
+    "process_steps": [
+      "Procurement and testing of raw materials (toxicity and quality)",
+      "Storage in raw-material godown",
+      "Batch mixing of ingredients as per feed formulation",
+      "Grinding of mixed material to 1-2 mm particle size",
+      "Mixing of minerals, vitamins and additives in ribbon mixer",
+      "Mixing ground material with molasses @ 10-12%",
+      "Steam conditioning of feed at 70-80 deg C",
+      "Pelleting through 8 mm die",
+      "Pellet cooling",
+      "Filling and packaging in HDPE/gunny bags"
+    ]
+  },
+  "config": {
+    "interest_rate_pct": 11.0,
+    "loan_tenor_months": 60,
+    "moratorium_months": 6,
+    "capacity_utilisation_ramp_pct": [
+      50,
+      55,
+      60,
+      65,
+      70
+    ],
+    "annual_price_escalation_pct": 5.0,
+    "depreciation_rate_pct": {
+      "plant_machinery": 15.0,
+      "misc_assets": 10.0
+    },
+    "working_capital_cycle_days": {
+      "raw_material_days": 30,
+      "finished_goods_days": 15,
+      "receivables_days": 15,
+      "payables_days": 14
+    },
+    "wc_margin_pct": 25.0,
+    "target_dscr_min": 1.5,
+    "rent_escalation_pct": 10.0,
+    "repair_pct_of_sales": 4.0,
+    "packaging_pct_of_sales": 2.0,
+    "selling_admin_pct_of_sales": 2.5,
+    "semi_variable_escalation_pct": 5.0,
+    "power": {
+      "connection_kw": 20,
+      "units_per_day": 70,
+      "rate_per_unit": 8.0
+    },
+    "labour_wage_table": [
+      {
+        "role": "Skilled/Unskilled Worker (incl. 10% fringe)",
+        "count": 2,
+        "monthly_wage_inr": 11000
+      },
+      {
+        "role": "Helper (incl. 10% fringe)",
+        "count": 2,
+        "monthly_wage_inr": 7700
+      }
+    ],
+    "staff_wage_table": [
+      {
+        "role": "Accountant cum Store Keeper (incl. 5% fringe)",
+        "count": 1,
+        "monthly_wage_inr": 15750
+      },
+      {
+        "role": "Sales (incl. 5% fringe)",
+        "count": 1,
+        "monthly_wage_inr": 12600
+      }
+    ],
+    "tax_threshold_lakh": 0.0,
+    "tax_rate_pct": 25.0
+  }
+}

@@ -1,0 +1,49 @@
+pdf-engine: tectonic
+from: markdown+pipe_tables
+to: pdf
+standalone: true
+toc: true
+toc-depth: 2
+number-sections: true
+variables:
+  geometry:
+    - a4paper
+    - top=20mm
+    - bottom=20mm
+    - left=18mm
+    - right=18mm
+  fontsize: 10pt
+  linestretch: 1.08
+  colorlinks: true
+  linkcolor: dprGreen
+  urlcolor: dprGreen
+  header-includes:
+    - |-
+      \usepackage{booktabs}
+      \usepackage{longtable}
+      \usepackage{array}
+      \usepackage{tabularx}
+      \usepackage{fancyhdr}
+      \usepackage{titling}
+      \usepackage{xcolor}
+      \usepackage{etoolbox}
+      \definecolor{dprGreen}{HTML}{175C43}
+      \definecolor{dprPale}{HTML}{EAF4EE}
+      \definecolor{dprGold}{HTML}{B78727}
+      \pagestyle{fancy}
+      \fancyhf{}
+      \lhead{\footnotesize\color{dprGreen}Detailed Project Report}
+      \rhead{\footnotesize\color{dprGreen}\thepage}
+      \renewcommand{\headrulewidth}{0.4pt}
+      \renewcommand{\headrule}{\hbox to\headwidth{\color{dprGreen}\leaders\hrule height \headrulewidth\hfill}}
+      \pretitle{\begin{center}\color{dprGreen}\LARGE\bfseries}
+      \posttitle{\par\vspace{0.5em}\color{dprGold}\rule{0.75\linewidth}{1pt}\end{center}\vspace{0.75em}}
+      \AtBeginEnvironment{longtable}{\small}
+      \setlength{\LTpre}{0.35em}
+      \setlength{\LTpost}{0.8em}
+      \setlength{\tabcolsep}{4pt}
+      \usepackage{tikz}
+      \usetikzlibrary{arrows.meta,positioning}
+      \tikzset{
+        flowbox/.style={draw=dprGreen,line width=0.6pt,rounded corners=3pt,fill=dprPale,text width=0.62\linewidth,align=center,inner sep=6pt,font=\small},
+        flowarrow/.style={-{Latex[length=2.4mm]},draw=dprGreen,line width=1pt}}
