@@ -53,9 +53,10 @@ apt install tectonic           # Debian/Ubuntu  (or: cargo install tectonic)
 `dpr/config.py` finds both binaries via the venv first, then `PATH`, so either source works.
 Tectonic caches LaTeX packages in `.tectonic-home/` on first run.
 
-Requires **Python ≥ 3.10**. Put `OPENAI_API_KEY` in `.env` (teacher/dataset lane only —
+Requires **Python ≥ 3.10**. Put `OPENAI_API_KEY`or any frontier model's api key  in `.env` (teacher/dataset lane only —
 see `.env.example`). *(Not installing? Everything also runs from the repo root, which is on
-`sys.path` for `python -m …` and for `scripts/run_pipeline.py`.)*
+`sys.path` for `python -m …` and for `scripts/run_pipeline.py`.)  
+(OpenAI api key is used here as an example since it was the frontier model used during training)*
 
 ## Get the model
 The v4 LoRA adapter (~81 MB) is **not in this repo**. Download it and place it at
