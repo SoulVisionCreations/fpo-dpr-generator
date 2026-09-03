@@ -123,11 +123,4 @@ fruit)* · Fruit & Veg Grading · Nursery Hardening · Vermicompost · Custom Hi
 Storage / Warehouse. Schemes: PM-FME (35 % subsidy), MIDH (40 %), AIF (3 % interest
 subvention), self-funded; unknown/"Others" → self-funded + a note.
 
-## Engine validation (ghee vs NIFTEM model DPR)
-| Metric | Engine | Ground truth |
-|---|---|---|
-| Total project cost (₹ Lakh) | 27.82 | 27.82 |
-| Subsidy / Term loan / WC bank | 7.66 / 12.03 / 5.34 | 7.66 / 12.03 / 5.34 |
 
-Capital, sales, depreciation match exactly; PAT taxes full PBT by design. The engine
-always asserts **means of finance == total project cost**.
