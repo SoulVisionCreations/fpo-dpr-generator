@@ -1,0 +1,69 @@
+"""Request/response models for the DPR service."""
+from __future__ import annotations
+
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field
+
+from dpr import config
+
+
+class Options(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    retries: int = Field(default=config.RETRIES, ge=0, le=5)
+    max_new_tokens: int = Field(default=config.MAX_NEW_TOKENS, ge=256, le=8192)
+    seed: int | None = None
+    strict: bool = Field(default=False, description="unclean verification -> 422 instead of 200")
+    include_instance: bool = Field(default=False, description="return the computed engine instance")
+
+
+class GenerateRequest(BaseModel):
+    # `extra="forbid"` guards the ENVELOPE only. `payload` is deliberately an
+    # opaque dict: convert_website accepts shapes a strict model would reject, and
+    # the API must accept exactly what --payload accepts.
+    model_config = ConfigDict(extra="forbid")
+
+    payload: dict[str, Any]
+    options: Options = Field(default_factory=Options)
+
+
+class Verification(BaseModel):
+    """The assemble() report, verbatim — all four keys."""
+    ok: bool
+    unknown_placeholders: list[str] = []
+    unplaced_sections: list[str] = []
+    number_issues: list[dict[str, Any]] = []
+
+
+class Meta(BaseModel):
+    commodity: str | None = None
+    report_title: str | None = None
+    attempts: int = 0
+    clean: bool = False
+    total_project_cost_lakh: float | None = None
+    average_dscr: float | None = None
+    pat_year1: float | None = None
+    balances: bool | None = None
+    financially_viable: bool | None = None
+    prompt_tokens: int = 0
+    output_tokens: int = 0
+    generation_ms: int = 0
+    model: str | None = None
+    model_revision: str | None = None
+    adapter: str | None = None
+
+
+class GenerateResponse(BaseModel):
+    request_id: str
+    markdown: str
+    verification: Verification
+    meta: Meta
+    warnings: list[str] = []
+    instance: dict[str, Any] | None = None
+
+
+class ErrorResponse(BaseModel):
+    error: str
+    detail: str
+    request_id: str | None = None

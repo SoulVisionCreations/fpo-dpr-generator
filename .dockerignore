@@ -1,0 +1,31 @@
+# venv/ alone is ~1 GB of build context
+venv/
+.venv/
+.git/
+.github/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# runtime artifacts and weights — mounted, never baked
+models/
+output/
+logs/
+.tectonic-home/
+
+# training corpus: 25 MB with no role at inference
+data/finetune/
+data/generated/
+data/payloads/
+data/examples/
+
+# local-only
+.env
+notes.txt
+tests/
+docs/
+assets/
+schema/
+samples/
+.DS_Store

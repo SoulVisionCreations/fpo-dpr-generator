@@ -1,0 +1,98 @@
+{
+  "data/payloads/amla_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "bfae034007abaeee14893a59f892956aedeb28565569e17ed6ea2d830e13d6b2",
+    "tpc": 44.82,
+    "dscr": 5.72
+  },
+  "data/payloads/custom_hiring_centre_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "e33ae0c54aca80a0b4c6aabc6983b144352c8315191859216635faed8835fabc",
+    "tpc": 14.04,
+    "dscr": 1.46
+  },
+  "data/payloads/dal_mill_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "2b4551f648af61f05db58293fe89b6c0931d056c0ad3e8cb41a37937be7e9ea7",
+    "tpc": 18.5,
+    "dscr": 10.15
+  },
+  "data/payloads/flour_mill_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "c2189d1fc879cff6973c23913fbe44a0bf1ef1060d09a8884e549b2bc55775d1",
+    "tpc": 71.07,
+    "dscr": 4.23
+  },
+  "data/payloads/ghee_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "0023784008e709f71e34c42abf8d0c98ff5e01639d54261f61b2934fc70da883",
+    "tpc": 28.45,
+    "dscr": 5.6
+  },
+  "data/payloads/mustard_oil_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "db172b904d4da607f3ecfb843ba67a98114c7dc38b57767a1d822a5bcf20742b",
+    "tpc": 25.97,
+    "dscr": 77.99
+  },
+  "data/payloads/nursery_hardening_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "a18e9e0aee0da328a5e763c9cefca2effe720de1d2d753c430ccfac6794c1482",
+    "tpc": 40.09,
+    "dscr": 4.14
+  },
+  "data/payloads/rice_mill_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "1f01c79fde6b47c23931c658f0d6a10569d12b5035afc18d8613aac035825b69",
+    "tpc": 59.61,
+    "dscr": 7.27
+  },
+  "data/payloads/spices_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "f459e3301015a0a1262252010f597e3556d78e4dc70b9504497a11f2312cad13",
+    "tpc": 28.32,
+    "dscr": 4.31
+  },
+  "data/payloads/veg_fruit_grading_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "48c3449c9f127e3557b3d9d8d6d618ff2a924a7bc5200a63860b9bb695d24929",
+    "tpc": 43.7,
+    "dscr": 6.16
+  },
+  "data/payloads/vermicompost_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "e34baaaffe11759040aea7988522503cc43c691dd6c58189d92676599ef04327",
+    "tpc": 5.0,
+    "dscr": 20.02
+  },
+  "data/payloads/warehouse_cold_storage_payload.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "deaaddd8e11c792243dd9b893a6a68175d3b3dce58e24e496277bdfbab0db4f0",
+    "tpc": 54.68,
+    "dscr": 2.24
+  },
+  "data/examples/mango_juice.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "781734c32d361782e240ce41297ca662835e0164603d0809fa3148081f6ad1cd",
+    "tpc": 68.54,
+    "dscr": 8.65
+  },
+  "data/examples/nursery_hardening.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "5a13d9c2cd96133f531e165c6c005bc7b640e8a367cfd9ef8d3b9109f5509066",
+    "tpc": 48.12,
+    "dscr": 6.56
+  },
+  "data/examples/spice_processing.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "0b374debdc1a01deaae39909ab960e7f83a642ff98a2e82435fb4aa8ea276db7",
+    "tpc": 47.04,
+    "dscr": 6.4
+  },
+  "data/examples/storage_warehouse.json": {
+    "sys_sha": "27742046cec0dd464c1901b04d0e20a43a7ff826005a7dcdf30024eb2caa4574",
+    "usr_sha": "9ba14006a1ecada17a1b677c53512bff34448d06b79d1cca060b980f33c967d7",
+    "tpc": 93.04,
+    "dscr": 3.5
+  }
+}

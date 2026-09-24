@@ -12,6 +12,8 @@ dependencies = []          # core (engine/render/convert) is pure stdlib
 [project.optional-dependencies]
 model = ["torch", "transformers", "peft"]   # narrative lane (GPU) + serving
 pdf   = ["pypandoc-binary"]                    # markdown -> PDF (bundles the pandoc binary; needs tectonic on PATH)
+serve = ["fastapi", "uvicorn[standard]", "pydantic"]   # HTTP service (vLLM comes from the container image)
+dev   = ["pytest", "anyio", "httpx"]
 
 [tool.setuptools.packages.find]
-include = ["dpr*"]
+include = ["dpr*", "serve*"]

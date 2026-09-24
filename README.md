@@ -116,6 +116,22 @@ Other options: `--out <path.pdf>`, `--adapter none` (base model), `--adapter <di
 It runs `convert → compute → model → assemble+verify (retry if unclean) → PDF`. Only the
 model step needs a GPU.
 
+## Serve — HTTP endpoint (markdown only)
+A single FastAPI process with vLLM in-process; synchronous, markdown only (no PDF).
+```bash
+docker build -t dpr-api .
+docker run -d --gpus all --ipc=host -p 8000:8000 \
+  -e DPR_API_KEY=... \
+  -v /mnt/dpr/hf:/models/hf \
+  -v /mnt/dpr/adapter:/adapters/v4:ro dpr-api
+
+curl -X POST localhost:8000/v1/dpr:generate -H "X-API-Key: $DPR_API_KEY" \
+     -H 'content-type: application/json' -d '{"payload": {...}}'
+```
+`POST /v1/dpr:generate` returns the markdown plus the engine's verification report
+and any silent-defaulting warnings. `/health` is liveness, `/ready` is readiness —
+the engine takes minutes to load 24 GB. Full reference: [docs/serving.md](docs/serving.md).
+
 ## Retrain (v-next) — data → finetune → eval
 ```bash
 # 1) generate viable, commodity-varied instances (frontier teacher; key auto-loaded from .env)
@@ -156,6 +172,7 @@ python -m training.gpt_gen_payloads --dry-run --per-line 3   # end-to-end datase
 - **What each file does** → [docs/FILE_FLOW.md](docs/FILE_FLOW.md)
 - **Every field/param & where its value comes from** → [docs/CONFIG_REFERENCE.md](docs/CONFIG_REFERENCE.md)
 - **Financial formulas** → [docs/FINANCIAL_ENGINE.md](docs/FINANCIAL_ENGINE.md)
+- **Running the HTTP service** → [docs/serving.md](docs/serving.md)
 
 ## The 12 lines & schemes
 Rice / Dhal / Flour Mill · Oil Extraction *(any oilseed)* · Ghee · Spice · Juice *(any

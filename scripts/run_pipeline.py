@@ -14,6 +14,9 @@ The engine owns every number; the model writes only prose; verify() guards every
 figure. If a generation is structurally broken or leaks a number, it is re-sampled
 (up to --retries) so a bad DPR is never written.
 
+This is a thin CLI over `dpr.pipeline`, which the HTTP service shares — the model
+lane lives in `dpr.backends.hf`.
+
 Usage:
   ./venv/bin/python run_pipeline.py --payload my_form.json
   ./venv/bin/python run_pipeline.py --payload my_form.json --out output/my_dpr.pdf
@@ -30,68 +33,20 @@ from datetime import datetime
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]              # repo root
-sys.path.insert(0, str(BASE))                           
+sys.path.insert(0, str(BASE))                           # allow `import dpr` without pip install
 
-from dpr.form_to_instance import convert                # noqa: E402
-from dpr.engine.financial_engine import compute         # noqa: E402
-from dpr.authoring import build_full_prompt             # noqa: E402
-from dpr.render.assemble import assemble                # noqa: E402
+from dpr import config, pipeline                        # noqa: E402
+from dpr.backends.base import AdapterNotFoundError      # noqa: E402
+from dpr.backends.hf import HFGenerator                 # noqa: E402
 from dpr.make_pdf import (normalize_tables, rebuild_process_flow,   # noqa: E402
                           inject_toc_after_summary, PANDOC, TECTONIC, STYLE, NOTOC)
 
-DEFAULT_MODEL = "google/gemma-4-12B-it"
-DEFAULT_ADAPTER = BASE / "models" / "google_gemma-4-12B-it_v4" / "adapter"
+DEFAULT_MODEL = config.MODEL_ID
+DEFAULT_ADAPTER = config.DEFAULT_ADAPTER
 
 
 def _slug(s: str) -> str:
     return "".join(c if c.isalnum() else "_" for c in (s or "dpr")).strip("_") or "dpr"
-
-
-def load_model(model_id: str, adapter: str | None):
-    """Load base model (+ optional LoRA adapter) on the roomiest GPU, else CPU."""
-    # Check the adapter BEFORE pulling ~24 GB of base weights, so a missing
-    # download fails in a second rather than after the whole model loads.
-    if adapter and not Path(adapter).is_dir():
-        sys.exit(f"[error] adapter not found: {adapter}\n"
-                 f"        Download it (README -> 'Get the model') and place it there, pass\n"
-                 f"        --adapter <dir> to point elsewhere, or --adapter none to run the\n"
-                 f"        BASE model deliberately (noticeably lower quality).")
-    import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-    tok = AutoTokenizer.from_pretrained(model_id)
-    if torch.cuda.is_available():
-        free = {i: int(torch.cuda.mem_get_info(i)[0] / 1024 ** 3) for i in range(torch.cuda.device_count())}
-        best = max(free, key=free.get)
-        load_kwargs = dict(dtype=torch.bfloat16, device_map={"": best})
-        print(f"[load] cuda:{best} ({free[best]} GiB free)")
-    else:
-        load_kwargs = dict(dtype=torch.float32, device_map={"": "cpu"})
-        print("[load] no GPU — running on CPU (slow)")
-    try:
-        model = AutoModelForCausalLM.from_pretrained(model_id, **load_kwargs)
-    except (ValueError, KeyError, RuntimeError):
-        from transformers import AutoModelForImageTextToText
-        model = AutoModelForImageTextToText.from_pretrained(model_id, **load_kwargs)
-    if adapter:
-        from peft import PeftModel
-        model = PeftModel.from_pretrained(model, str(adapter))
-        print(f"[load] adapter: {adapter}")
-    model.eval()
-    return tok, model
-
-
-def generate(tok, model, inst: dict, max_new_tokens: int, sample: bool) -> str:
-    import torch
-    sysp, usr = build_full_prompt(inst)
-    chat = [{"role": "system", "content": sysp}, {"role": "user", "content": usr}]
-    enc = tok.apply_chat_template(chat, tokenize=True, add_generation_prompt=True, return_tensors="pt")
-    ids = (enc if isinstance(enc, torch.Tensor) else enc["input_ids"]).to(model.device)
-    attn = torch.ones_like(ids)          # single unpadded sequence -> attend to every token
-    gen = dict(max_new_tokens=max_new_tokens, pad_token_id=tok.pad_token_id or tok.eos_token_id)
-    gen.update(dict(do_sample=True, temperature=0.7, top_p=0.9) if sample else dict(do_sample=False))
-    with torch.no_grad():
-        out = model.generate(ids, attention_mask=attn, **gen)
-    return tok.decode(out[0][ids.shape[-1]:], skip_special_tokens=True)
 
 
 def render_pdf(final_md: str, pdf_out: Path) -> bool:
@@ -115,41 +70,47 @@ def main() -> int:
     ap.add_argument("--out", type=Path, help="output PDF path (default: output/DPR_<product>_<ts>.pdf)")
     ap.add_argument("--model", default=DEFAULT_MODEL)
     ap.add_argument("--adapter", default=str(DEFAULT_ADAPTER), help="LoRA adapter dir ('none' for base model)")
-    ap.add_argument("--max-new-tokens", type=int, default=3500)
-    ap.add_argument("--retries", type=int, default=2, help="re-sample if assemble/verify is unclean")
+    ap.add_argument("--max-new-tokens", type=int, default=config.MAX_NEW_TOKENS)
+    ap.add_argument("--retries", type=int, default=config.RETRIES, help="re-sample if assemble/verify is unclean")
     ap.add_argument("--md-only", action="store_true", help="stop at markdown; skip PDF rendering")
     args = ap.parse_args()
 
     # 1) payload -> instance -> numbers
     payload = json.loads(args.payload.read_text(encoding="utf-8"))
-    inst = convert(payload)
-    compute(inst)
-    c = inst["computed"]
-    pc, mf, pr, d = c["project_cost"], c["means_of_finance"], c["profitability"], c["dscr"]
-    print(f"[engine] {inst['meta']['commodity']} | TPC {pc['total_project_cost']}L | "
-          f"PAT-y1 {pr['pat'][0]} | avg DSCR {d['average']} | balances "
-          f"{abs(mf['total'] - pc['total_project_cost']) <= 0.05}")
-    if pr["pat"][0] < 0 or d["average"] < 1.5:
+    inst = pipeline.prepare(payload)
+    v = pipeline.viability(inst)
+    print(f"[engine] {inst['meta']['commodity']} | TPC {v['total_project_cost_lakh']}L | "
+          f"PAT-y1 {v['pat_year1']} | avg DSCR {v['average_dscr']} | balances "
+          f"{v['balances']}")
+    if not v["financially_viable"]:
         print("[engine] ⚠ project is not financially viable as configured (PAT<0 or DSCR<1.5) — "
               "DPR will still be generated, honestly reflecting the numbers.")
 
     # 2) author with the finetuned model, retry until assemble+verify is clean
     adapter = None if str(args.adapter).lower() == "none" else args.adapter
-    tok, model = load_model(args.model, adapter)
-    final, rep = None, None
-    for attempt in range(args.retries + 1):
-        doc = generate(tok, model, inst, args.max_new_tokens, sample=attempt > 0)
-        final, rep = assemble(doc, inst)
+    try:
+        generator = HFGenerator.load(args.model, adapter)
+    except AdapterNotFoundError as e:
+        sys.exit(f"[error] adapter not found: {e.path}\n"
+                 f"        Download it (README -> 'Get the model') and place it there, pass\n"
+                 f"        --adapter <dir> to point elsewhere, or --adapter none to run the\n"
+                 f"        BASE model deliberately (noticeably lower quality).")
+
+    result = pipeline.run(payload, generator, retries=args.retries,
+                          max_new_tokens=args.max_new_tokens, instance=inst)
+    for a in result.attempts:
+        rep = a.report
         if rep["ok"]:
-            print(f"[author] clean on attempt {attempt + 1} "
+            print(f"[author] clean on attempt {a.index + 1} "
                   f"(placeholders placed, {len(rep['number_issues'])} number issues)")
-            break
-        print(f"[author] attempt {attempt + 1} unclean: unplaced={rep['unplaced_sections']} "
-              f"unknown={rep['unknown_placeholders']} number_issues={len(rep['number_issues'])} — resampling")
-    else:
+        else:
+            print(f"[author] attempt {a.index + 1} unclean: unplaced={rep['unplaced_sections']} "
+                  f"unknown={rep['unknown_placeholders']} number_issues={len(rep['number_issues'])} — resampling")
+    if not result.clean:
         print("[author] ⚠ still unclean after retries — writing best effort (review flagged items).")
 
     # 3) write outputs
+    final = result.markdown
     out_pdf = args.out or (BASE / "output" / f"DPR_{_slug(inst['meta']['commodity'])}_"
                            f"{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf")
     out_pdf.parent.mkdir(parents=True, exist_ok=True)
