@@ -15,6 +15,41 @@ form JSON ─┬─▶ engine  (ALL numbers) ───────────�
            └─▶ LLM     (narrative prose + {{TABLE}} placeholders) ──┘
 ```
 
+## What a DPR contains
+
+Every generated report follows the same NABARD / PM-FME structure — 6 sections, with
+§5 carrying 19 costed sub-schedules:
+
+| § | Section | Written by |
+|---|---|---|
+| 1 | Project Summary | engine |
+| 2 | Product, Market & Value Chain | **model** (`###` sub-headings: Introduction · Uses & Benefits · Market Potential · Raw Material) |
+| 3 | Basis & Presumptions | engine |
+| 4 | Process Flow Chart | engine |
+| 5 | Economics of the Project | engine (19 schedules, below) |
+| 6 | Limitations of the Model DPR | fixed text |
+| — | Disclaimer | fixed text |
+
+**§5 — Economics of the Project**
+
+```
+5.1  Key Operating Parameters          5.11 Salaries & Wages
+5.2  Capacity, Utilisation, Output     5.12 Power Requirement
+5.3  Premises                          5.13 Depreciation
+5.4  Machinery & Equipment             5.14 Repair & Maintenance
+5.5  Misc Fixed Assets                 5.15 Profitability Analysis
+5.6  Total Cost of Project             5.16 Break-Even Point
+5.7  Means of Finance                  5.17 Projected Balance Sheet
+5.8  Term Loan                         5.18 Cash-Flow Statement
+5.9  Repayment & Interest Schedule     5.19 Debt-Service Coverage Ratio
+5.10 Working Capital
+```
+
+All money figures are in **Rs. Lakh**, projected over **5 years**. The model authors the
+headings and §2 prose and emits `{{TABLE:<id>}}` placeholders everywhere else; `assemble()`
+swaps in the engine's exact tables and `verify()` rejects any number the model typed that
+the engine didn't produce. Canonical list: `SECTION_ORDER` in `dpr/render/sections.py`.
+
 ## Repository layout
 
 ```
@@ -73,7 +108,11 @@ first run. Inference needs a GPU with **≥ 24 GB** free — the adapter is LoRA
 python scripts/run_pipeline.py --payload data/examples/mango_juice.json
 # → output/DPR_<product>_<timestamp>.pdf   (+ .md alongside)
 ```
-Options: `--out <path.pdf>`, `--adapter none` (base model), `--md-only`, `--retries N`.
+**Want markdown only?** Add `--md-only` — it stops after the `.md` and skips the PDF step
+entirely, so pandoc/tectonic aren't needed.
+
+Other options: `--out <path.pdf>`, `--adapter none` (base model), `--adapter <dir>`,
+`--retries N`, `--max-new-tokens N`.
 It runs `convert → compute → model → assemble+verify (retry if unclean) → PDF`. Only the
 model step needs a GPU.
 

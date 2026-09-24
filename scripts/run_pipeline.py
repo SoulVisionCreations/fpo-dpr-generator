@@ -49,6 +49,13 @@ def _slug(s: str) -> str:
 
 def load_model(model_id: str, adapter: str | None):
     """Load base model (+ optional LoRA adapter) on the roomiest GPU, else CPU."""
+    # Check the adapter BEFORE pulling ~24 GB of base weights, so a missing
+    # download fails in a second rather than after the whole model loads.
+    if adapter and not Path(adapter).is_dir():
+        sys.exit(f"[error] adapter not found: {adapter}\n"
+                 f"        Download it (README -> 'Get the model') and place it there, pass\n"
+                 f"        --adapter <dir> to point elsewhere, or --adapter none to run the\n"
+                 f"        BASE model deliberately (noticeably lower quality).")
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(model_id)
@@ -65,12 +72,10 @@ def load_model(model_id: str, adapter: str | None):
     except (ValueError, KeyError, RuntimeError):
         from transformers import AutoModelForImageTextToText
         model = AutoModelForImageTextToText.from_pretrained(model_id, **load_kwargs)
-    if adapter and Path(adapter).exists():
+    if adapter:
         from peft import PeftModel
         model = PeftModel.from_pretrained(model, str(adapter))
         print(f"[load] adapter: {adapter}")
-    elif adapter:
-        print(f"[warn] adapter not found ({adapter}) — using BASE model")
     model.eval()
     return tok, model
 
