@@ -149,15 +149,46 @@ def main() -> int:
 
             if args.lora:
                 print("\n[7] proving the LoRA is actually applied")
-                with_lora = out.text
-                saved, gen.lora_request = gen.lora_request, None
-                base = (await gen.agenerate("You are a helpful assistant.",
-                                            "Name three Indian oilseeds.", spec)).text
-                gen.lora_request = saved
-                if with_lora.strip() == base.strip():
-                    bad("identical output with and without the adapter — LoRA is NOT applied")
+                # Use a REAL DPR prompt. A rank-16 adapter trained on DPR authoring
+                # barely moves logits on general trivia, so an out-of-domain prompt
+                # can produce identical greedy text either way and proves nothing.
+                import json as _json
+
+                from dpr import pipeline
+                from dpr.authoring import build_full_prompt
+                payload = _json.loads((BASE / "data/examples/mango_juice.json").read_text())
+                sysp, usr = build_full_prompt(pipeline.prepare(payload))
+                info("using the production DPR prompt (in-domain)")
+
+                # Compare LOGPROBS, not just text: identical argmax is common, but
+                # identical probability mass to 6dp means the weights never changed.
+                async def probe(lora):
+                    saved, gen.lora_request = gen.lora_request, lora
+                    try:
+                        return await gen.agenerate(sysp, usr, spec, logprobs=5)
+                    finally:
+                        gen.lora_request = saved
+
+                a = await probe(gen.lora_request)      # with adapter
+                b = await probe(None)                  # base model
+
+                same_text = a.text.strip() == b.text.strip()
+                same_lp = (a.first_logprobs is not None and b.first_logprobs is not None
+                           and a.first_logprobs == b.first_logprobs)
+                info(f"with adapter : {a.text[:70]!r}")
+                info(f"base model   : {b.text[:70]!r}")
+                if a.first_logprobs and b.first_logprobs:
+                    info(f"top-1 logprob  adapter={a.first_logprobs[0]:.6f} "
+                         f"base={b.first_logprobs[0]:.6f}")
+                if same_lp:
+                    bad("first-token logprobs are bit-identical — LoRA is NOT applied")
+                    info("check vLLM's startup log for a LoRA load line, and confirm")
+                    info("enable_lora/max_lora_rank reached the engine.")
                     return 1
-                ok("output differs with vs without the adapter — LoRA is live")
+                if same_text:
+                    ok("logprobs differ (LoRA is live); greedy text happens to match")
+                else:
+                    ok("output and logprobs both differ — LoRA is live")
             await gen.shutdown()
             return 0
 

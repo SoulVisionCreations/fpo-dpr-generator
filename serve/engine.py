@@ -37,6 +37,10 @@ MAX_MODEL_LEN = int(os.environ.get("DPR_MAX_MODEL_LEN", 8192))
 GPU_MEM_UTIL = float(os.environ.get("DPR_GPU_MEMORY_UTILIZATION", 0.90))
 MAX_NUM_SEQS = int(os.environ.get("DPR_MAX_NUM_SEQS", 8))
 REQUEST_TIMEOUT_S = float(os.environ.get("DPR_REQUEST_TIMEOUT_S", 240))
+# Text-only. Set DPR_DISABLE_MM_LIMITS=1 to fall back to vLLM defaults if a
+# version rejects these keys (their names track the model's modalities).
+MM_LIMITS = None if os.environ.get("DPR_DISABLE_MM_LIMITS") == "1" \
+    else {"image": 0, "audio": 0, "video": 0}
 
 
 @dataclass
@@ -108,6 +112,11 @@ class VLLMGenerator:
             max_loras=1,
             max_cpu_loras=1,
             trust_remote_code=False,
+            # This checkpoint carries vision AND audio towers. We only ever send
+            # text, so zero the modality budgets: otherwise vLLM profiles the
+            # encoders at startup ("profiled with 1 video items of the maximum
+            # feature size") and reserves an encoder cache we never use.
+            limit_mm_per_prompt=MM_LIMITS,
         )
         engine = AsyncLLMEngine.from_engine_args(args)
         lora = LoRARequest("dpr_v4", 1, str(adapter))
@@ -130,7 +139,7 @@ class VLLMGenerator:
             ids = ids[0]
         return [int(i) for i in ids]
 
-    def _sampling(self, spec: SamplingSpec):
+    def _sampling(self, spec: SamplingSpec, logprobs: int | None = None):
         from vllm import SamplingParams
         kwargs = dict(
             max_tokens=spec.max_new_tokens,
@@ -143,15 +152,18 @@ class VLLMGenerator:
             kwargs.update(temperature=spec.temperature, top_p=spec.top_p)
             if spec.seed is not None:
                 kwargs["seed"] = spec.seed
+        if logprobs:
+            kwargs["logprobs"] = logprobs
         return SamplingParams(**kwargs)
 
     # --------------------------------------------------------------- generation
-    async def agenerate(self, system: str, user: str, spec: SamplingSpec) -> GenerationOutput:
+    async def agenerate(self, system: str, user: str, spec: SamplingSpec,
+                        logprobs: int | None = None) -> GenerationOutput:
         from vllm import TokensPrompt
 
         ids = self.encode(system, user)
         request_id = f"dpr-{time.time_ns()}"
-        params = self._sampling(spec)
+        params = self._sampling(spec, logprobs)
 
         final = None
         try:
@@ -168,11 +180,17 @@ class VLLMGenerator:
         if final is None or not final.outputs:
             raise RuntimeError("vLLM returned no output")
         comp = final.outputs[0]
+        first_lp = None
+        if logprobs and comp.logprobs:
+            # comp.logprobs[0] maps token_id -> Logprob for the first generated step
+            first_lp = tuple(sorted((lp.logprob for lp in comp.logprobs[0].values()),
+                                    reverse=True))
         return GenerationOutput(
             text=comp.text,
             prompt_tokens=len(final.prompt_token_ids or ids),
             output_tokens=len(comp.token_ids or []),
             finish_reason=comp.finish_reason or "",
+            first_logprobs=first_lp,
         )
 
     async def warmup(self) -> None:

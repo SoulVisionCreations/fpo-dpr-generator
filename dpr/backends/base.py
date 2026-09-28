@@ -30,6 +30,10 @@ class GenerationOutput:
     prompt_tokens: int = 0
     output_tokens: int = 0
     finish_reason: str = ""
+    # Top-k logprobs of the FIRST generated token, when requested. Used to prove
+    # a LoRA is actually applied: identical argmax is common, identical
+    # probability mass is not.
+    first_logprobs: tuple[float, ...] | None = None
 
 
 @dataclass(frozen=True)
