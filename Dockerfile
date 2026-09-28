@@ -28,9 +28,9 @@ ENV PYTHONUNBUFFERED=1 \
 
 WORKDIR /app
 
-COPY requirements-serve.txt ./
-RUN pip install --no-cache-dir -r requirements-serve.txt
-
+# NOTE: no pip install of fastapi/uvicorn/pydantic here. The vllm-openai image
+# already ships them (it runs a FastAPI server itself), and forcing our own pins
+# on top risks downgrading a version vLLM depends on. Use what the image has.
 COPY pyproject.toml ./
 COPY dpr/ ./dpr/
 COPY serve/ ./serve/
@@ -38,7 +38,8 @@ COPY serve/ ./serve/
 # The finetune corpus (25 MB) is training data and has no place in the image.
 COPY data/templates/ ./data/templates/
 
-# --no-deps: the image's torch must not be touched. `-e` is load-bearing —
+# --no-deps: the image's torch (and fastapi/pydantic) must not be touched.
+# `-e` is load-bearing —
 # config.REPO_ROOT is derived from dpr/__file__, so a non-editable install would
 # put dpr/ in site-packages and leave data/templates unreachable. DPR_DATA_DIR
 # above is the belt-and-braces fix for the same hazard.

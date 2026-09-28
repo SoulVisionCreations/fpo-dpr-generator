@@ -73,7 +73,19 @@ async def lifespan(app: FastAPI):
         await closer()
 
 
-app = FastAPI(title="FPO DPR Generator", version="0.1.0", lifespan=lifespan)
+# Swagger/ReDoc describe the whole API surface to anyone who can reach the port.
+# Handy while testing, unnecessary in production — DPR_ENABLE_DOCS=0 removes
+# /docs, /redoc and /openapi.json entirely (404, not merely hidden).
+ENABLE_DOCS = os.environ.get("DPR_ENABLE_DOCS", "1") != "0"
+
+app = FastAPI(
+    title="FPO DPR Generator",
+    version="0.1.0",
+    lifespan=lifespan,
+    docs_url="/docs" if ENABLE_DOCS else None,
+    redoc_url="/redoc" if ENABLE_DOCS else None,
+    openapi_url="/openapi.json" if ENABLE_DOCS else None,
+)
 mw.install(app)
 
 

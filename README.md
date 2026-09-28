@@ -117,6 +117,9 @@ It runs `convert → compute → model → assemble+verify (retry if unclean) �
 model step needs a GPU.
 
 ## Serve — HTTP endpoint (markdown only)
+**First time running it? → [QUICKSTART.md](QUICKSTART.md)**
+
+
 A single FastAPI process with vLLM in-process; synchronous, markdown only (no PDF).
 ```bash
 docker build -t dpr-api .

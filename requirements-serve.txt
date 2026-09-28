@@ -1,8 +1,8 @@
-# Serving dependencies. Pinned deliberately: vLLM's Python API changes across
-# minor releases, and an unpinned rebuild later will not start.
+# Serving dependencies for a BARE-METAL install (Option A in QUICKSTART.md).
 #
-# vllm itself comes from the base image (vllm/vllm-openai:v0.30.0) — do NOT pip
-# install it here, or pip will pull its own torch and break the CUDA stack.
-fastapi==0.115.6
-uvicorn[standard]==0.34.0
-pydantic==2.10.4
+# NOT used by the Docker image: vllm/vllm-openai already ships fastapi, uvicorn
+# and pydantic, and installing our own versions over them risks breaking vLLM.
+# Unpinned on purpose — pip resolves these against whatever vLLM requires.
+fastapi
+uvicorn[standard]
+pydantic
