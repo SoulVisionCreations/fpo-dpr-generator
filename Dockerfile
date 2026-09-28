@@ -5,7 +5,12 @@
 #
 # PIN THIS TAG. vLLM's Python API moves across minor releases, and an unpinned
 # rebuild months from now will not start.
-FROM vllm/vllm-openai:v0.11.0
+#
+# v0.30.0 is the version gate0_check.py was verified against on the L40S box:
+# Gemma4UnifiedForConditionalGeneration is in its registry, and the
+# AsyncLLMEngine / TokensPrompt / LoRARequest calls in serve/engine.py all work.
+# If you change this tag, re-run scripts/gate0_check.py --load --lora first.
+FROM vllm/vllm-openai:v0.30.0
 
 # The base image's entrypoint launches vLLM's own OpenAI server. We run our own
 # FastAPI app instead, so clear it — forgetting this is the classic mistake.

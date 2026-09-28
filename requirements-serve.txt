@@ -1,7 +1,7 @@
 # Serving dependencies. Pinned deliberately: vLLM's Python API changes across
 # minor releases, and an unpinned rebuild later will not start.
 #
-# vllm itself comes from the base image (vllm/vllm-openai:v0.11.0) — do NOT pip
+# vllm itself comes from the base image (vllm/vllm-openai:v0.30.0) — do NOT pip
 # install it here, or pip will pull its own torch and break the CUDA stack.
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
