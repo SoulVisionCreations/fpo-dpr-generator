@@ -21,7 +21,8 @@ import os
 import time
 import uuid
 
-from fastapi import Depends, FastAPI, HTTPException, Request, status
+from fastapi import Depends, FastAPI, HTTPException, Request, Security, status
+from fastapi.security import APIKeyHeader
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -56,11 +57,19 @@ def check_startup_auth() -> None:
         )
 
 
-async def require_api_key(request: Request) -> None:
+# Declared as a security scheme (not just a header read) so it appears in
+# OpenAPI and Swagger UI renders an "Authorize" button. auto_error=False keeps
+# the Authorization: Bearer fallback working.
+_api_key_scheme = APIKeyHeader(name="X-API-Key", auto_error=False,
+                               description="Service API key (DPR_API_KEY)")
+
+
+async def require_api_key(request: Request,
+                          key: str | None = Security(_api_key_scheme)) -> None:
     """Constant-time key check. Never logs or echoes the key."""
     if not auth_enabled():
         return
-    presented = request.headers.get("x-api-key") or ""
+    presented = key or request.headers.get("x-api-key") or ""
     if not presented:
         bearer = request.headers.get("authorization") or ""
         if bearer.lower().startswith("bearer "):
