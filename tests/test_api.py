@@ -115,12 +115,29 @@ def test_retry_then_clean(client, payload, monkeypatch, flaky_generator):
 
 
 # ------------------------------------------------------------------- warnings
-def test_unknown_business_line_is_flagged(client):
-    """convert_website silently defaults; the API must not stay silent too."""
+def test_unknown_business_line_is_rejected(client):
+    """businessLine selects the template, units and every line-standard figure.
+    Guessing it would produce a confident DPR for the wrong business, so reject."""
     bad = {"document_type": "dpr",
            "fields": {"businessLine": "Nonsense Co", "capacity": "500", "salePrice": "40"}}
-    w = client.post(URL, json={"payload": bad}, headers=KEY).json()["warnings"]
-    assert any("Nonsense Co" in x and "warehouse_cold_storage" in x for x in w)
+    r = client.post(URL, json={"payload": bad}, headers=KEY)
+    assert r.status_code == 422
+    detail = r.json()["detail"]
+    assert "Nonsense Co" in detail
+    assert "Rice Mill" in detail, "the error should name the valid options"
+
+
+def test_missing_business_line_is_rejected(client):
+    r = client.post(URL, json={"payload": {"document_type": "dpr", "fields": {}}}, headers=KEY)
+    assert r.status_code == 422
+    assert "businessLine is required" in r.json()["detail"]
+
+
+def test_no_payload_ever_produces_a_warehouse_dpr_by_accident(client):
+    """Regression guard: warehouse used to be the silent fallback for anything."""
+    for fields in ({}, {"businessLine": ""}, {"businessLine": "Cold Store"}):
+        r = client.post(URL, json={"payload": {"fields": fields}}, headers=KEY)
+        assert r.status_code == 422, f"{fields} produced {r.status_code}"
 
 
 def test_clean_payload_has_no_warnings(client, payload):

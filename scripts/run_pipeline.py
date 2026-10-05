@@ -77,7 +77,10 @@ def main() -> int:
 
     # 1) payload -> instance -> numbers
     payload = json.loads(args.payload.read_text(encoding="utf-8"))
-    inst = pipeline.prepare(payload)
+    try:
+        inst = pipeline.prepare(payload)
+    except ValueError as e:
+        sys.exit(f"[error] {e}")
     v = pipeline.viability(inst)
     print(f"[engine] {inst['meta']['commodity']} | TPC {v['total_project_cost_lakh']}L | "
           f"PAT-y1 {v['pat_year1']} | avg DSCR {v['average_dscr']} | balances "

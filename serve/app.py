@@ -150,16 +150,13 @@ def _warnings(payload: dict, inst: dict) -> list[str]:
     warehouse_cold_storage. Over HTTP that yields a confident, plausible, wrong
     DPR with no signal, so say so explicitly.
     """
-    from dpr.form_to_instance import BL_TO_TEMPLATE
-
     out: list[str] = []
-    f = payload.get("fields", payload) if isinstance(payload, dict) else {}
-    if isinstance(f, dict):
-        bl = str(f.get("businessLine", "")).strip()
-        if not bl:
-            out.append("no businessLine supplied — defaulted to warehouse_cold_storage")
-        elif bl not in BL_TO_TEMPLATE:
-            out.append(f"unrecognised businessLine {bl!r} — defaulted to warehouse_cold_storage")
+    # Every figure the converter substituted for a blank form field. These are
+    # deterministic line/template defaults, never model output — but they appear
+    # in the DPR as fact, so the caller has to be able to see them.
+    for d in inst.get("meta", {}).get("defaults_applied", []):
+        unit = f" {d['unit']}" if d.get("unit") else ""
+        out.append(f"{d['field']} not supplied — used {d['value']}{unit} ({d.get('source','default')})")
     # The engine already decides whether a scheme was modelled; read its note
     # rather than re-implementing the lookup and risking the two disagreeing.
     note = inst.get("computed", {}).get("means_of_finance", {}).get("fallback_note")
@@ -181,6 +178,18 @@ async def generate(req: GenerateRequest, request: Request, response: Response) -
     inst = pipeline.prepare(req.payload)
     v = pipeline.viability(inst)
     warnings = _warnings(req.payload, inst)
+    applied = inst.get("meta", {}).get("defaults_applied", [])
+
+    # Bank/NABARD submissions require every figure to originate from the applicant.
+    # Reject before spending ~70s of GPU on a document that would be rejected anyway.
+    if opts.require_complete_inputs and applied:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            {"error": "incomplete_inputs",
+             "detail": "financial fields missing; no defaults applied because "
+                       "require_complete_inputs was set",
+             "missing": [d["field"] for d in applied],
+             "defaults_that_would_have_been_used": applied})
 
     t0 = time.perf_counter()
     try:
@@ -224,6 +233,7 @@ async def generate(req: GenerateRequest, request: Request, response: Response) -
         "output_tokens": meta.output_tokens,
         "generation_ms": gen_ms,
         "warnings": len(warnings),
+        "defaults_applied": len(applied),
     }
 
     body = GenerateResponse(
@@ -233,6 +243,7 @@ async def generate(req: GenerateRequest, request: Request, response: Response) -
                                      ("ok", "unknown_placeholders", "unplaced_sections", "number_issues")}),
         meta=meta,
         warnings=warnings,
+        defaults_applied=applied,
         instance=inst if opts.include_instance else None,
     )
 

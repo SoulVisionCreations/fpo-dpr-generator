@@ -15,6 +15,12 @@ class Options(BaseModel):
     max_new_tokens: int = Field(default=config.MAX_NEW_TOKENS, ge=256, le=8192)
     seed: int | None = None
     strict: bool = Field(default=False, description="unclean verification -> 422 instead of 200")
+    require_complete_inputs: bool = Field(
+        default=False,
+        description=("Reject rather than substitute. If the payload omits any financial "
+                     "field, return 422 listing them instead of using a line default. "
+                     "Use this for bank/NABARD submissions, where every figure must "
+                     "originate from the applicant."))
     include_instance: bool = Field(default=False, description="return the computed engine instance")
 
 
@@ -54,12 +60,25 @@ class Meta(BaseModel):
     adapter: str | None = None
 
 
+class DefaultApplied(BaseModel):
+    """A figure the FPO did not supply, substituted by the deterministic converter.
+
+    Never produced by the language model. Machine-readable so a caller can assert
+    the list is empty before sending a DPR to a bank.
+    """
+    field: str
+    value: Any
+    unit: str = ""
+    source: str = ""
+
+
 class GenerateResponse(BaseModel):
     request_id: str
     markdown: str
     verification: Verification
     meta: Meta
     warnings: list[str] = []
+    defaults_applied: list[DefaultApplied] = []
     instance: dict[str, Any] | None = None
 
 

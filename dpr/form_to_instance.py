@@ -349,15 +349,33 @@ def _classify_manpower(rows: list, tpl: dict):
     return lab, stf
 
 
+def _record(log: list, field: str, value, unit: str = "", source: str = "line default"):
+    """Note that a figure the FPO did not supply was substituted.
+
+    Every entry here is a number that appears in the DPR as fact but did not come
+    from the form. Callers surface these so a bank can see exactly which figures
+    are ours rather than the applicant's.
+    """
+    log.append({"field": field, "value": value, "unit": unit, "source": source})
+
+
 def convert_website(payload: dict) -> dict:
     """Convert the flat NAFPO form payload to an engine instance. Accepts either the
     raw `fields` dict or a `{document_type, fields}` wrapper."""
     f = payload.get("fields", payload) if isinstance(payload, dict) else {}
     today = date.today().isoformat()
+    applied: list[dict] = []        # every figure substituted for a blank form field
 
-    # --- business line -> template (unknown line -> warehouse as a safe default) --
+    # --- business line -> template -------------------------------------------------
+    # No silent default here. businessLine selects the template, the units and every
+    # line-standard figure, so guessing it would produce a confident DPR for the
+    # wrong business. Reject instead and name the valid options.
     bl = str(f.get("businessLine", "")).strip()
-    stem = BL_TO_TEMPLATE.get(bl, "warehouse_cold_storage")
+    stem = BL_TO_TEMPLATE.get(bl)
+    if stem is None:
+        raise ValueError(
+            (f"unrecognised businessLine {bl!r}" if bl else "businessLine is required")
+            + "; expected one of: " + ", ".join(BL_TO_TEMPLATE))
     tpl = json.loads((TEMPLATES / f"{stem}.json").read_text())
     dflt = LINE_DEFAULTS[stem]
     cfg = json.loads(json.dumps(tpl["config"]))          # deep copy; overlay form values
@@ -379,8 +397,13 @@ def convert_website(payload: dict) -> dict:
     cap_val = _num(f.get("capacity"), dflt["cap"])
     if cap_val <= 0:
         cap_val = dflt["cap"]
+    if _num(f.get("capacity"), 0) <= 0:
+        _record(applied, "capacity", dflt["cap"], f"{dflt['unit']}/day")
+    days_in = _num(f.get("workingDays"), 0)
     days = int(_num(f.get("workingDays"), dflt["days"]) or dflt["days"])
     days = max(1, min(days, 366))
+    if days_in <= 0:
+        _record(applied, "workingDays", dflt["days"], "days/year")
     # Capacity is the finished-product throughput per day, priced per output unit.
     # No wastage/recovery is applied (client decision): the entered capacity IS the
     # saleable output, so input == output across all lines.
@@ -399,11 +422,15 @@ def convert_website(payload: dict) -> dict:
     sale_price = _num(f.get("salePrice"), dflt["price"])
     if sale_price <= 0:
         sale_price = dflt["price"]
+    if _num(f.get("salePrice"), 0) <= 0:
+        _record(applied, "salePrice", dflt["price"], f"INR/{dflt['unit']}")
     rm = f.get("rmcost") if isinstance(f.get("rmcost"), dict) else {}
     rm_mode = str(rm.get("mode", "")).strip().lower()
     rm_value = _num(rm.get("value"), None)
     if rm_mode not in ("unit", "pct") or rm_value is None:
         rm_mode, rm_value = dflt["rm"]                   # template/line default
+        _record(applied, "rmcost", rm_value,
+                "% of revenue" if rm_mode == "pct" else f"INR/{dflt['unit']}")
     if rm_mode == "pct":
         rm_method, rm_price = "pct_of_revenue", max(0.0, rm_value) / 100.0
     else:
@@ -418,10 +445,14 @@ def convert_website(payload: dict) -> dict:
     else:                                                # blank -> template machinery
         items = tpl["machinery_items_indicative"]
         machinery_inr = sum(i["inr"] for i in items if isinstance(i, dict))
+        _record(applied, "machinery", machinery_inr, "INR", f"{stem} template list")
     civil_lakh = max(0.0, _num(f.get("civilCost"), 0) / LAKH)
     misc_lakh = _num(f.get("otherFixedAssets"), None)
-    misc_lakh = tpl["technical_defaults"]["misc_fixed_assets_lakh"] if misc_lakh in (None, 0) \
-        else max(0.0, misc_lakh / LAKH)
+    if misc_lakh in (None, 0):
+        misc_lakh = tpl["technical_defaults"]["misc_fixed_assets_lakh"]
+        _record(applied, "otherFixedAssets", misc_lakh, "INR lakh", f"{stem} template")
+    else:
+        misc_lakh = max(0.0, misc_lakh / LAKH)
 
     # --- land / rent --------------------------------------------------------------
     land = "leased" if "leas" in str(f.get("landStatus", "")).lower() \
@@ -435,20 +466,35 @@ def convert_website(payload: dict) -> dict:
         scheme = SCHEME_MAP.get(nm)
         if not scheme:               # any unlisted / free-text scheme -> unknown key so the
             scheme = re.sub(r"[^0-9A-Za-z]+", "_", nm).strip("_") or "others"   # engine falls back + notes it
+        # The key is slugified for lookup; keep what the FPO actually typed so the
+        # note printed in the DPR names their scheme, not our internal slug.
+        scheme_label = nm or None
     else:                                                # "No" / "Not sure" / blank
         scheme = "no_scheme"
+        scheme_label = None
 
     # --- config overrides from the form -------------------------------------------
+    if _num(f.get("priceEscalation"), 0) <= 0:
+        _record(applied, "priceEscalation", cfg.get("annual_price_escalation_pct", 5), "%/year")
     cfg["annual_price_escalation_pct"] = _num(f.get("priceEscalation"), cfg.get("annual_price_escalation_pct", 5)) or 5
+    if _num(f.get("electricityCost"), 0) <= 0:
+        _record(applied, "electricityCost", 15000, "INR/month", "standard assumption")
     cfg["electricity_monthly_inr"] = max(0.0, _num(f.get("electricityCost"), 15000))
     loan = f.get("loan") if isinstance(f.get("loan"), dict) else {}
     interest = _num(loan.get("interest_pct"), cfg.get("interest_rate_pct", 11))
+    if interest <= 0:
+        _record(applied, "loan.interest_pct", cfg.get("interest_rate_pct", 11), "%/year")
     cfg["interest_rate_pct"] = interest if interest > 0 else cfg.get("interest_rate_pct", 11)
     tenure = int(_num(loan.get("tenure_months"), 0))
     if tenure <= 12:                                     # form default 12 == no repayment window -> sane default
+        _record(applied, "loan.tenure_months", 60, "months",
+                "supplied value <= 12 months leaves no repayment window" if tenure else "not supplied")
         tenure = 60
     cfg["loan_tenor_months"] = tenure
-    morat = int(_num(loan.get("moratorium_months"), cfg.get("moratorium_months", 12)))
+    morat_in = loan.get("moratorium_months")
+    morat = int(_num(morat_in, cfg.get("moratorium_months", 12)))
+    if morat_in is None:
+        _record(applied, "loan.moratorium_months", cfg.get("moratorium_months", 12), "months")
     cfg["moratorium_months"] = max(0, min(morat, tenure - 1))
     cfg["labour_wage_table"], cfg["staff_wage_table"] = _classify_manpower(f.get("manpower"), tpl)
 
@@ -471,6 +517,9 @@ def convert_website(payload: dict) -> dict:
             "synthetic": False,
             "prepared_by": "FPO DPR Generator (NAFPO FPO Document Builder form)",
             "created_as_of": today,
+            # Figures the FPO did not supply, substituted by this converter. They
+            # appear in the DPR as fact, so callers must be able to see them.
+            "defaults_applied": applied,
         },
         "narrative": {
             "fpo_name": (str(f.get("fpoName")).strip() or None) if f.get("fpoName") else None,
@@ -513,7 +562,7 @@ def convert_website(payload: dict) -> dict:
             },
             "capacity": capacity_block,
             "own_equity_committed_lakh": max(0.0, _num(f.get("ownFunds"), 0) / LAKH),
-            "scheme": {"choice": scheme},
+            "scheme": {"choice": scheme, "label": scheme_label},
             "provenance": {
                 "capex.machinery_inr": prov("form: machinery table (sum of rows)"
                                             if items and items is not tpl["machinery_items_indicative"]

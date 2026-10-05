@@ -185,7 +185,15 @@ def install_exception_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(HTTPException)
     async def _http(request: Request, exc: HTTPException):
-        resp = _envelope(f"http_{exc.status_code}", str(exc.detail), exc.status_code)
+        # A dict detail is already a structured envelope (e.g. the list of missing
+        # financial fields) — pass it through rather than str()-ing it into prose
+        # the caller would have to parse back out.
+        if isinstance(exc.detail, dict):
+            body = {**exc.detail, "request_id": request_id_var.get()}
+            body.setdefault("error", f"http_{exc.status_code}")
+            resp = JSONResponse(body, status_code=exc.status_code)
+        else:
+            resp = _envelope(f"http_{exc.status_code}", str(exc.detail), exc.status_code)
         for k, v in (exc.headers or {}).items():
             resp.headers[k] = v
         return resp

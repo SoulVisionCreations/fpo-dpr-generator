@@ -1,7 +1,7 @@
 """
 Deterministic financial engine for FPO DPRs (base commodity: ghee).
 
-Calibrated to the NIFTEM PM-FME "Ghee Making Unit" model DPR. Reproduces its
+Calibrated to the NIFTEM PM-FME model DPR. Reproduces its
 basis & presumptions exactly:
   * RM cost on the raw-material REQUIREMENT (gross throughput, wastage NOT
     deducted); output/sales on net-of-wastage production less 5-day FG stock.
@@ -229,8 +229,11 @@ class DPRFinancialModel:
         self.scheme_fallback_note = None
         norm = SCHEME_NORMS.get(choice)
         if norm is None or norm.get("type") is None:
+            # Name the scheme as the FPO typed it, not our slugified lookup key —
+            # this note is printed in the DPR that goes to the bank.
+            shown = (self.inp.get("scheme") or {}).get("label") or choice
             self.scheme_fallback_note = (
-                f"The selected financing option ('{choice}') is not modelled in this tool; "
+                f"The selected financing option ('{shown}') is not modelled in this tool; "
                 "the project is presented on a self-funded basis (FPO promoter equity + term "
                 "loan, no capital subsidy). Please consult your CBBO / bank for the specific "
                 "terms of the intended scheme.")
