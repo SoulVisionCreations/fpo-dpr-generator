@@ -165,6 +165,13 @@ def _warnings(payload: dict, inst: dict) -> list[str]:
     return out
 
 
+# /dpr is the path the UAI connector is pointed at (UAI_AGENT_URL=
+# http://dpr-agent:9000/dpr). /v1/dpr:generate is the native name. One handler
+# serves both so they cannot drift.
+@app.post("/dpr", response_model=GenerateResponse, include_in_schema=False,
+          dependencies=[Depends(require_ready),
+                        Depends(mw.require_api_key),
+                        Depends(mw.acquire_slot)])
 @app.post("/v1/dpr:generate", response_model=GenerateResponse,
           dependencies=[Depends(require_ready),
                         Depends(mw.require_api_key),     # auth before a slot is consumed

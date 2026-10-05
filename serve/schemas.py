@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from dpr import config
 
@@ -32,6 +32,21 @@ class GenerateRequest(BaseModel):
 
     payload: dict[str, Any]
     options: Options = Field(default_factory=Options)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _accept_a_bare_form(cls, data: Any) -> Any:
+        """Accept the form payload with or without the envelope.
+
+        Callers that post the FPO Document Builder form directly — a gateway
+        forwarding the client's body unchanged, or anyone using the form's own
+        shape — send {"document_type": ..., "fields": {...}} at the top level.
+        Wrap that rather than rejecting it; `extra="forbid"` would otherwise 422
+        on every form field.
+        """
+        if isinstance(data, dict) and "payload" not in data:
+            return {"payload": data}
+        return data
 
 
 class Verification(BaseModel):

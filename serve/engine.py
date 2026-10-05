@@ -41,6 +41,9 @@ REQUEST_TIMEOUT_S = float(os.environ.get("DPR_REQUEST_TIMEOUT_S", 240))
 # version rejects these keys (their names track the model's modalities).
 MM_LIMITS = None if os.environ.get("DPR_DISABLE_MM_LIMITS") == "1" \
     else {"image": 0, "audio": 0, "video": 0}
+# Bundled images bake the adapter INTO the weights (scripts/merge_adapter.py), so
+# there is no LoRA to load and nothing to fetch from the Hub at runtime.
+MERGED = os.environ.get("DPR_MERGED_MODEL") == "1"
 
 
 @dataclass
@@ -85,17 +88,19 @@ class VLLMGenerator:
         # Fail before pulling 24 GB of weights. In a service a silent fallback to
         # the base model is far worse than in a one-shot CLI run: it would serve
         # degraded output indefinitely with only a startup warning.
-        if not adapter.is_dir():
+        if not MERGED and not adapter.is_dir():
             raise AdapterNotFoundError(adapter)
+        if MERGED and not Path(model_id).is_dir():
+            raise AdapterNotFoundError(
+                f"{model_id} (DPR_MERGED_MODEL=1 expects a local merged model directory)")
 
         from transformers import AutoTokenizer
         from vllm import AsyncEngineArgs, AsyncLLMEngine
-        from vllm.lora.request import LoRARequest
 
-        # Prompt construction uses the adapter's tokenizer so the container needs
-        # no separate copy of the base repo's tokenizer files. Verified
-        # byte-identical to the base for tokenizer.json and chat_template.jinja.
-        tok = AutoTokenizer.from_pretrained(str(adapter))
+        # Merged weights ship their own tokenizer; otherwise take the adapter's,
+        # which is byte-identical to the base for tokenizer.json and
+        # chat_template.jinja, so the container needs no copy of the base repo.
+        tok = AutoTokenizer.from_pretrained(model_id if MERGED else str(adapter))
 
         args = AsyncEngineArgs(
             model=model_id,
@@ -107,10 +112,11 @@ class VLLMGenerator:
             # reserve KV cache for a 256K context and OOM or waste the card.
             max_model_len=MAX_MODEL_LEN,
             max_num_seqs=MAX_NUM_SEQS,
-            enable_lora=True,
-            max_lora_rank=16,               # matches adapter_config.json
-            max_loras=1,
-            max_cpu_loras=1,
+            # LoRA machinery is only needed when the adapter is applied at
+            # runtime. A merged model has it already folded into the weights.
+            enable_lora=not MERGED,
+            **({} if MERGED else
+               {"max_lora_rank": 16, "max_loras": 1, "max_cpu_loras": 1}),
             trust_remote_code=False,
             # This checkpoint carries vision AND audio towers. We only ever send
             # text, so zero the modality budgets: otherwise vLLM profiles the
@@ -119,9 +125,15 @@ class VLLMGenerator:
             limit_mm_per_prompt=MM_LIMITS,
         )
         engine = AsyncLLMEngine.from_engine_args(args)
-        lora = LoRARequest("dpr_v4", 1, str(adapter))
-        log.info("vLLM engine constructed (model=%s adapter=%s max_model_len=%d)",
-                 model_id, adapter, MAX_MODEL_LEN)
+        if MERGED:
+            lora = None
+            log.info("vLLM engine constructed (merged weights at %s, max_model_len=%d)",
+                     model_id, MAX_MODEL_LEN)
+        else:
+            from vllm.lora.request import LoRARequest
+            lora = LoRARequest("dpr_v4", 1, str(adapter))
+            log.info("vLLM engine constructed (model=%s adapter=%s max_model_len=%d)",
+                     model_id, adapter, MAX_MODEL_LEN)
         return cls(engine, tok, lora, model_id)
 
     # ------------------------------------------------------------------- prompt

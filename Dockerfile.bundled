@@ -1,0 +1,95 @@
+# FPO DPR generator — self-contained image with the model baked in.
+#
+# Unlike ./Dockerfile, this carries the merged weights, so the container needs no
+# network, no Hugging Face access and no mounted volumes. The client pulls one
+# image and runs one command.
+#
+#   1. python scripts/merge_adapter.py --out models/merged   (on a box with ~50 GB disk)
+#   2. docker build -f Dockerfile.bundled -t ghcr.io/<org>/dpr-api:<tag> .
+#
+# Image is ~37 GB: ~24 GB of bf16 weights over a ~12 GB vLLM base.
+#
+# PIN THIS TAG. v0.30.0 is what scripts/gate0_check.py was verified against on an
+# L40S — the architecture is in its registry and the engine API matches
+# serve/engine.py. Changing it means re-running that check.
+FROM vllm/vllm-openai:v0.30.0
+
+# The base image's entrypoint starts vLLM's own OpenAI server; we run our own
+# FastAPI app. Forgetting to clear this is the classic mistake.
+ENTRYPOINT []
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    # NOT optional: financial_engine._assert_balance is the only guarantee that
+    # means of finance equals project cost, and `python -O` strips assertions.
+    PYTHONOPTIMIZE=0 \
+    VLLM_WORKER_MULTIPROC_METHOD=spawn \
+    # Weights are local; never reach for the Hub at runtime.
+    HF_HUB_OFFLINE=1 \
+    TRANSFORMERS_OFFLINE=1 \
+    DPR_MERGED_MODEL=1 \
+    DPR_MODEL_ID=/models/merged \
+    DPR_DATA_DIR=/app/data \
+    # Tunable per card without rebuilding. Defaults suit a 44-48 GB GPU.
+    DPR_MAX_MODEL_LEN=8192 \
+    DPR_GPU_MEMORY_UTILIZATION=0.90 \
+    DPR_MAX_NUM_SEQS=8 \
+    DPR_MAX_CONCURRENCY=4
+
+# ---------------------------------------------------------------------------
+# Weights first, and in their own layer. They are ~24 GB and change rarely; the
+# application code is ~1 MB and changes constantly. In this order a code change
+# rebuilds only the small layers below and the weights layer stays cached —
+# reversed, every edit would re-push 24 GB.
+# ---------------------------------------------------------------------------
+# One layer, ~24 GB. Registries cap individual layer size (Docker Hub at 10 GB;
+# GHCR's is undocumented) — verify the first push succeeds before relying on it.
+# If it is rejected, split this into several COPY lines by shard filename; the
+# merge writes 5 GB shards, so grouping two or three per layer stays well inside
+# any cap. Globbing blindly is not safe: a COPY pattern that matches no file
+# fails the build, and the shard count is not known until the merge runs.
+COPY models/merged/ /models/merged/
+
+WORKDIR /app
+
+# No pip install of fastapi/uvicorn/pydantic: the vllm-openai image already ships
+# them (it runs a FastAPI server itself), and pinning our own over the top risks
+# downgrading something vLLM depends on.
+COPY pyproject.toml ./
+COPY dpr/ ./dpr/
+COPY serve/ ./serve/
+# Only the business-line templates — form_to_instance reads data/templates/<line>.json
+# on every request. The finetune corpus is training data and has no place here.
+COPY data/templates/ ./data/templates/
+
+# --no-deps keeps the image's torch untouched. The `-e` is load-bearing:
+# config.REPO_ROOT is derived from dpr/__file__, so a non-editable install would
+# put dpr/ in site-packages and leave data/templates unreachable.
+RUN pip install --no-deps -e .
+
+# Fail the build rather than ship an image whose weights or code are missing.
+RUN python -c "\
+import pathlib, sys; \
+w = pathlib.Path('/models/merged'); \
+sf = list(w.glob('*.safetensors')); \
+sys.exit('merged weights missing from /models/merged') if not sf else None; \
+sys.exit('tokenizer.json missing') if not (w/'tokenizer.json').is_file() else None; \
+sys.exit('chat_template.jinja missing') if not (w/'chat_template.jinja').is_file() else None; \
+print('weights OK:', len(sf), 'shard(s),', sum(f.stat().st_size for f in sf)//2**30, 'GiB')" \
+ && python -c "import serve.app; print('app imports OK')"
+
+# Reached over the 'uai' docker network by the connector, not published.
+EXPOSE 9000
+
+# start-period covers first-boot CUDA graph capture; there is no model download.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=600s --retries=3 \
+    CMD curl -fsS http://localhost:9000/health || exit 1
+
+# --workers 1: each worker would load its own copy of the model.
+# --no-access-log: serve.middleware emits the structured access log.
+# keep-alive above the 240s request deadline so the connection outlives a slow DPR.
+CMD ["uvicorn", "serve.app:app", \
+     "--host", "0.0.0.0", "--port", "9000", \
+     "--workers", "1", \
+     "--timeout-keep-alive", "305", \
+     "--no-access-log"]

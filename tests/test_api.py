@@ -220,3 +220,36 @@ async def test_capacity_returns_429(monkeypatch, payload, good_generator):
 @pytest.fixture
 def anyio_backend():
     return "asyncio"
+
+
+# --------------------------------------------- gateway / connector compatibility
+def test_dpr_alias_matches_the_native_route(client, payload):
+    """/dpr is what the UAI connector is pointed at. One handler serves both, so
+    an alias that silently drifts from the native route is not possible."""
+    native = client.post("/v1/dpr:generate", json={"payload": payload}, headers=KEY)
+    alias = client.post("/dpr", json={"payload": payload}, headers=KEY)
+    assert alias.status_code == native.status_code == 200
+    assert alias.json()["markdown"] == native.json()["markdown"]
+
+
+def test_bare_form_is_accepted_without_the_envelope(client, payload):
+    """A gateway forwarding the client's body unchanged sends the form itself."""
+    r = client.post("/dpr", json=payload, headers=KEY)
+    assert r.status_code == 200, r.text
+    assert r.json()["meta"]["commodity"]
+
+
+def test_bare_form_and_envelope_agree(client, payload):
+    a = client.post("/dpr", json=payload, headers=KEY).json()
+    b = client.post("/dpr", json={"payload": payload}, headers=KEY).json()
+    assert a["markdown"] == b["markdown"]
+    assert a["meta"]["total_project_cost_lakh"] == b["meta"]["total_project_cost_lakh"]
+
+
+def test_options_still_work_with_the_envelope(client, payload):
+    r = client.post("/dpr", json={"payload": payload, "options": {"strict": True}}, headers=KEY)
+    assert r.status_code == 200
+
+
+def test_dpr_alias_requires_auth(client, payload):
+    assert client.post("/dpr", json={"payload": payload}).status_code == 401

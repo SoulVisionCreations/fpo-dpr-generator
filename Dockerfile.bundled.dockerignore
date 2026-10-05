@@ -1,0 +1,35 @@
+# Build context for the bundled image. Differs from .dockerignore in one way:
+# models/merged/ IS included, because the weights are baked in.
+venv/
+.venv/
+.git/
+.github/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# run artifacts
+output/
+logs/
+.tectonic-home/
+
+# every model directory except the merged weights we are baking in
+models/*
+!models/merged/
+
+# training corpus — not needed at inference
+data/finetune/
+data/generated/
+data/payloads/
+data/examples/
+
+# local only
+.env
+notes.txt
+tests/
+docs/
+assets/
+schema/
+samples/
+.DS_Store
