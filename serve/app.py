@@ -89,6 +89,12 @@ app = FastAPI(
 mw.install(app)
 
 
+def _engine_merged() -> bool:
+    """True when the weights already contain the adapter (bundled/merged mode)."""
+    from serve.engine import MERGED
+    return MERGED
+
+
 async def require_ready() -> None:
     from fastapi import HTTPException
     if not STATE.ready:
@@ -226,7 +232,9 @@ async def generate(req: GenerateRequest, request: Request, response: Response) -
         generation_ms=gen_ms,
         model=config.MODEL_ID,
         model_revision=config.MODEL_REVISION,
-        adapter=config.DEFAULT_ADAPTER.name,
+        # In merged mode the adapter is folded into the weights; reporting a
+        # directory name here would imply one is being applied at runtime.
+        adapter=None if _engine_merged() else config.DEFAULT_ADAPTER.name,
     )
 
     # Merged into the single access-log line by AccessLogMiddleware.

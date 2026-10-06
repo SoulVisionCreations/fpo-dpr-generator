@@ -68,7 +68,7 @@ COPY data/templates/ ./data/templates/
 RUN pip install --no-deps -e .
 
 # Fail the build rather than ship an image whose weights or code are missing.
-RUN python -c "\
+RUN python3 -c "\
 import pathlib, sys; \
 w = pathlib.Path('/models/merged'); \
 sf = list(w.glob('*.safetensors')); \
@@ -76,7 +76,7 @@ sys.exit('merged weights missing from /models/merged') if not sf else None; \
 sys.exit('tokenizer.json missing') if not (w/'tokenizer.json').is_file() else None; \
 sys.exit('chat_template.jinja missing') if not (w/'chat_template.jinja').is_file() else None; \
 print('weights OK:', len(sf), 'shard(s),', sum(f.stat().st_size for f in sf)//2**30, 'GiB')" \
- && python -c "import serve.app; print('app imports OK')"
+ && python3 -c "import serve.app; print('app imports OK')"
 
 # Reached over the 'uai' docker network by the connector, not published.
 EXPOSE 9000
