@@ -31,6 +31,7 @@ from dpr import config, pipeline                                   # noqa: E402
 from dpr.backends.base import AdapterNotFoundError                 # noqa: E402
 from serve import middleware as mw                                 # noqa: E402
 from serve.engine import REQUEST_TIMEOUT_S, EngineState            # noqa: E402
+from serve.agent_card import card as agent_card                   # noqa: E402
 from serve.logging_config import configure as configure_logging    # noqa: E402
 from serve.schemas import (GenerateRequest, GenerateResponse,      # noqa: E402
                            Meta, Verification)
@@ -123,6 +124,16 @@ async def ready() -> Response:
     return JSONResponse(body, status_code=code)
 
 
+# The discovery document: description, input fields, output shape, business
+# lines. Deliberately NOT gated on require_ready — an integrator reading the
+# contract should get an answer while the weights are still loading.
+@app.get("/info", dependencies=[Depends(mw.require_api_key)])
+async def info_card() -> dict:
+    return agent_card()
+
+
+# The operational twin of /info: engine internals, for monitoring rather than
+# integration. Kept separate so neither audience has to read the other's fields.
 @app.get("/v1/info", dependencies=[Depends(mw.require_api_key)])
 async def info() -> dict:
     try:
@@ -171,9 +182,16 @@ def _warnings(payload: dict, inst: dict) -> list[str]:
     return out
 
 
-# /dpr is the path the UAI connector is pointed at (UAI_AGENT_URL=
-# http://dpr-agent:9000/dpr). /v1/dpr:generate is the native name. One handler
-# serves both so they cannot drift.
+# Three names, one handler, so they cannot drift:
+#   /run              the generic verb, and what /info advertises
+#   /dpr              what the UAI connector is pointed at
+#                     (UAI_AGENT_URL=http://dpr-agent:9000/dpr)
+#   /v1/dpr:generate  the native, versioned name
+# Only /dpr is hidden from the OpenAPI schema; /run is the one to document.
+@app.post("/run", response_model=GenerateResponse,
+          dependencies=[Depends(require_ready),
+                        Depends(mw.require_api_key),
+                        Depends(mw.acquire_slot)])
 @app.post("/dpr", response_model=GenerateResponse, include_in_schema=False,
           dependencies=[Depends(require_ready),
                         Depends(mw.require_api_key),
