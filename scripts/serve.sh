@@ -7,22 +7,33 @@
 # starts downloading 23 GB from Hugging Face and enables LoRA machinery that the
 # merged weights do not need. That has filled a disk twice.
 #
-#   ./scripts/serve.sh                      # weights at /opt/dpr-weights
-#   DPR_WEIGHTS=~/dpr-weights ./scripts/serve.sh
+#   ./scripts/serve.sh                      # finds weights automatically
+#   DPR_WEIGHTS=/some/path ./scripts/serve.sh
 #   DPR_API_KEY=secret ./scripts/serve.sh   # require a key (default: open)
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO"
 
-WEIGHTS="${DPR_WEIGHTS:-/opt/dpr-weights}"
+# No sudo on the box means the weights usually land in $HOME, not /opt. Look in
+# both rather than making every invocation pass DPR_WEIGHTS.
+if [[ -n "${DPR_WEIGHTS:-}" ]]; then
+  WEIGHTS="$DPR_WEIGHTS"
+else
+  for cand in /opt/dpr-weights "$HOME/dpr-weights" "$REPO/models/merged"; do
+    if compgen -G "$cand/*.safetensors" >/dev/null; then WEIGHTS="$cand"; break; fi
+  done
+  WEIGHTS="${WEIGHTS:-/opt/dpr-weights}"      # for the error message below
+fi
 
 # Fail here, loudly, rather than 20 minutes into an unintended download.
 if ! compgen -G "$WEIGHTS/*.safetensors" >/dev/null; then
   echo "error: no .safetensors in $WEIGHTS" >&2
   echo "       These are the MERGED weights (adapter already folded in):" >&2
-  echo "         mkdir -p $WEIGHTS && cd $WEIGHTS" >&2
+  echo "         mkdir -p ~/dpr-weights && cd ~/dpr-weights" >&2
   echo "         oras pull ghcr.io/soulvisioncreations/dpr-weights:v4" >&2
+  [[ -z "${DPR_WEIGHTS:-}" ]] && \
+    echo "       Searched: /opt/dpr-weights, ~/dpr-weights, $REPO/models/merged" >&2
   echo "       Set DPR_WEIGHTS to point somewhere else." >&2
   exit 1
 fi
